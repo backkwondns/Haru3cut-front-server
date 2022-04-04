@@ -1,6 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
+    "baseUrl": "./src",
+    "paths": {
+      "interfaces/*" : ["interfaces/*"],
+      "atoms/*" : ["atoms/*"],
+      "styles/*" : ["styles/*"],
+      "views/*" : ["views/*"],
+      "organisms/*" : ["organisms/*"],
+      "stores/*" : ["stores/*"],
+      "icons/*" : ["icons/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -16,11 +26,15 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "plugin": ["styled-jsx/babel"]
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "src/interfaces/custom.d.ts"
+  ],
 }

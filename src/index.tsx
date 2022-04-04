@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { Provider } from 'mobx-react';
+import RootStore from 'stores/root.store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const rootStore = new RootStore();
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider {...rootStore}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
