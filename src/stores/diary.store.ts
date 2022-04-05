@@ -6,6 +6,8 @@ export default class DiaryStore {
 
   selectedImage = { imageFile: {}, preview: '' };
 
+  privateCheck = false;
+
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
     this.rootStore = rootStore;
@@ -17,5 +19,13 @@ export default class DiaryStore {
 
   setSelectedImage(imageFile: object, preview: string) {
     this.selectedImage = { imageFile, preview };
+  }
+
+  get getPrivateCheck() {
+    return this.privateCheck;
+  }
+
+  setPrivateCheck() {
+    this.privateCheck = !this.privateCheck;
   }
 }

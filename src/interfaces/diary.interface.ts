@@ -1,8 +1,8 @@
-import { imageSelectorInterface } from 'interfaces/organisms.interface';
+import { checkItemInterface, imageSelectorInterface } from 'interfaces/organisms.interface';
 
 export interface imageInterface {
   imageFile: object;
   preview: string;
 }
 
-export type newPostInterface = imageSelectorInterface;
+export interface newPostInterface extends imageSelectorInterface, checkItemInterface {}

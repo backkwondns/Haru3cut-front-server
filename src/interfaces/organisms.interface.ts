@@ -5,7 +5,7 @@ export interface iconButtonInterface extends buttonInterface {
   icon: JSX.Element;
   text?: string;
   direction?: 'horizontal' | 'vertical';
-  onClick?: (event: any) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface avatarInterface {
@@ -38,4 +38,10 @@ export interface imageSelectorInterface {
     onFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onClickFile: () => void;
   };
+}
+
+export interface checkItemInterface {
+  value?: string;
+  checked: boolean;
+  toggleItem: () => void;
 }

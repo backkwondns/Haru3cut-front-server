@@ -5,8 +5,10 @@ import NewPost from './newPost';
 function NewPostContainer() {
   const rootStore = useContext(MobXProviderContext);
   const selectedImage = rootStore.diaryStore.getSelectedImage;
+  const privateCheck = rootStore.diaryStore.getPrivateCheck;
 
   const imageRef = useRef<HTMLInputElement>(null);
+
   const onFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     if (event.currentTarget.files) {
@@ -21,17 +23,30 @@ function NewPostContainer() {
       };
     }
   };
+
   const onClickFile = () => {
     if (imageRef.current) {
       imageRef.current.click();
     }
   };
 
+  const toggleItem = () => {
+    rootStore.diaryStore.setPrivateCheck();
+  };
+
   const onEvent = {
     onFileUpload,
     onClickFile,
   };
-  return <NewPost preview={selectedImage.preview} imageRef={imageRef} onEvent={onEvent} />;
+  return (
+    <NewPost
+      preview={selectedImage.preview}
+      imageRef={imageRef}
+      checked={privateCheck}
+      toggleItem={toggleItem}
+      onEvent={onEvent}
+    />
+  );
 }
 
 export default observer(NewPostContainer);
