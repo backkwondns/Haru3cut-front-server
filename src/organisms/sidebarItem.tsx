@@ -2,6 +2,7 @@ import React from 'react';
 import { organismsInterface } from 'interfaces';
 import styled from 'styled-components';
 import { IconButton } from 'organisms';
+import { useNavigate } from 'react-router-dom';
 
 const SidebarItemDesktop = styled(IconButton)`
    {
@@ -32,7 +33,16 @@ const SidebarItemMobile = styled(IconButton)`
 `;
 
 function SidebarItem(props: organismsInterface.sidebarItemInterface) {
-  const { icon, text, mobile = true, onClick } = props;
+  const navigator = useNavigate();
+  const {
+    icon,
+    text,
+    mobile = true,
+    target = '',
+    onClick = () => {
+      navigator(target);
+    },
+  } = props;
   return (
     <div>
       {mobile ? (

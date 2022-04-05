@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { diaryInterface } from 'interfaces';
 import RootStore from './root.store';
 
 export default class DiaryStore {
@@ -7,6 +8,10 @@ export default class DiaryStore {
   selectedImage = { imageFile: {}, preview: '' };
 
   privateCheck = false;
+
+  tagList: string[] = [];
+
+  selectedTag: diaryInterface.Option[] = [];
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
@@ -27,5 +32,21 @@ export default class DiaryStore {
 
   setPrivateCheck() {
     this.privateCheck = !this.privateCheck;
+  }
+
+  get getTagList() {
+    return this.tagList;
+  }
+
+  setTagList(tagList: string[]) {
+    this.tagList = tagList;
+  }
+
+  get getSelectedTag() {
+    return this.selectedTag;
+  }
+
+  setSelectedTag(selectedTag: diaryInterface.Option[]) {
+    this.selectedTag = selectedTag;
   }
 }

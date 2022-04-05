@@ -21,6 +21,7 @@ export interface sidebarItemInterface {
   text: string;
   mobile?: boolean;
   style?: CSSProperties;
+  target?: string;
   onClick?: () => void;
 }
 
