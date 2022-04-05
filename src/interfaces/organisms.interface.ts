@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import { buttonInterface } from './atoms.interface';
 
 export interface iconButtonInterface extends buttonInterface {
@@ -28,4 +28,14 @@ export interface transferListInterface {
   // list: { [key: string]: string };
   selectedList: string[];
   nonSelectedList: string[];
+}
+
+export interface imageSelectorInterface {
+  preview?: string;
+  imageRef: React.Ref<any>;
+  text?: string;
+  onEvent: {
+    onFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onClickFile: () => void;
+  };
 }

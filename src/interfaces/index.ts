@@ -5,6 +5,7 @@ import * as registerInterface from './register.interface';
 import * as loginInterface from './login.interface';
 import * as layoutInterface from './layout.interface';
 import * as commonInterface from './common.interface';
+import * as diaryInterface from './diary.interface';
 
 export {
   atomsInterface,
@@ -13,5 +14,6 @@ export {
   registerInterface,
   loginInterface,
   layoutInterface,
+  diaryInterface,
   commonInterface,
 };
