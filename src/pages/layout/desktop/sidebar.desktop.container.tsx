@@ -6,6 +6,7 @@ import SidebarDesktop from './sidebar.desktop';
 function SidebarDesktopContainer() {
   const rootStore = useContext(MobXProviderContext);
   const searchValue = rootStore.themeStore.getSearch;
+  const moreSetting = rootStore.themeStore.getMoreSetting;
   const [sidebar, setSidebar] = useState(false);
   const [search, setSearch] = useState(false);
   const onClickMore = () => setSidebar((prevState) => !prevState);
@@ -20,6 +21,10 @@ function SidebarDesktopContainer() {
 
   const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     rootStore.themeStore.setSearch(event.currentTarget.value);
+  };
+
+  const onMoreSetting = () => {
+    rootStore.themeStore.toggleMoreSetting();
   };
 
   const searchRef = useRef<HTMLInputElement>(null);
@@ -38,9 +43,17 @@ function SidebarDesktopContainer() {
     onClickSearch,
     onEnterSearch,
     onChangeSearch,
+    onMoreSetting,
   };
   return (
-    <SidebarDesktop nickName={nickName} searchValue={searchValue} sidebar={sidebar} search={search} onEvent={onEvent} />
+    <SidebarDesktop
+      nickName={nickName}
+      searchValue={searchValue}
+      sidebar={sidebar}
+      moreSetting={moreSetting}
+      search={search}
+      onEvent={onEvent}
+    />
   );
 }
 

@@ -32,12 +32,18 @@ const SidebarItemMobile = styled(IconButton)`
   }
 `;
 
+const NestedSidebarItem = styled(SidebarItemDesktop)`
+  .sidebar-item-icon {
+    margin-right: 40px;
+  }
+`;
 function SidebarItem(props: organismsInterface.sidebarItemInterface) {
   const navigator = useNavigate();
   const {
     icon,
     text,
-    mobile = true,
+    mobile = false,
+    nested = false,
     target = '',
     onClick = () => {
       navigator(target);
@@ -45,8 +51,9 @@ function SidebarItem(props: organismsInterface.sidebarItemInterface) {
   } = props;
   return (
     <div>
-      {mobile ? (
-        <SidebarItemMobile icon={icon} text={text} direction="horizontal" onClick={onClick} />
+      {mobile && <SidebarItemMobile icon={icon} text={text} direction="horizontal" onClick={onClick} />}
+      {nested ? (
+        <NestedSidebarItem icon={icon} text={text} direction="horizontal" onClick={onClick} />
       ) : (
         <SidebarItemDesktop icon={icon} text={text} direction="horizontal" onClick={onClick} />
       )}

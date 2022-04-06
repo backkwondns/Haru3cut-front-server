@@ -20,6 +20,7 @@ export interface sidebarItemInterface {
   icon: JSX.Element;
   text: string;
   mobile?: boolean;
+  nested?: boolean;
   style?: CSSProperties;
   target?: string;
   onClick?: () => void;
