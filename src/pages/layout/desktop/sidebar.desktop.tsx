@@ -155,10 +155,30 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
               mobile={false}
             />
           </div>
-          <SidebarItem icon={<Create24 fill="white" className="sidebar-item-icon" />} text="작성" mobile={false} />
-          <SidebarItem icon={<PhotoCamera24 fill="white" className="sidebar-item-icon" />} text="일기" mobile={false} />
-          <SidebarItem icon={<Groups24 fill="white" className="sidebar-item-icon" />} text="친구" mobile={false} />
-          <SidebarItem icon={<Category24 fill="white" className="sidebar-item-icon" />} text="모임" mobile={false} />
+          <SidebarItem
+            icon={<Create24 fill="white" className="sidebar-item-icon" />}
+            text="작성"
+            mobile={false}
+            target="newpost"
+          />
+          <SidebarItem
+            icon={<PhotoCamera24 fill="white" className="sidebar-item-icon" />}
+            text="일기"
+            mobile={false}
+            target="diary"
+          />
+          <SidebarItem
+            icon={<Groups24 fill="white" className="sidebar-item-icon" />}
+            text="친구"
+            mobile={false}
+            target="friend"
+          />
+          <SidebarItem
+            icon={<Category24 fill="white" className="sidebar-item-icon" />}
+            text="모임"
+            mobile={false}
+            target="party"
+          />
           <SidebarItem icon={<Star24 fill="white" className="sidebar-item-icon" />} text="보관" mobile={false} />
           <SidebarItem icon={<MoreHorizon24 fill="white" className="sidebar-item-icon" />} text="설정" mobile={false} />
         </ListSidebar>

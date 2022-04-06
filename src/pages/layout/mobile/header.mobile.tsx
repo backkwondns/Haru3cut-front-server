@@ -1,6 +1,6 @@
 import { Input } from 'atoms';
 import { Avatar, IconButton } from 'organisms';
-import { Create24, Dehaze24, Search24 } from 'icons';
+import { Dehaze24, Search24 } from 'icons';
 import React from 'react';
 import { commonInterface, layoutInterface } from 'interfaces';
 import styled, { css, keyframes } from 'styled-components';
@@ -22,7 +22,6 @@ const ContainerHeader = styled.div`
   justify-content: space-between;
   padding: 0px 10px 0px 10px;
   border-bottom: 1px solid #60606040;
-  align-items: center;
 `;
 
 const SearchArea = styled.div`
@@ -99,7 +98,6 @@ function HeaderMobile(props: layoutInterface.headerMobileInterface) {
         </div>
         <div className="rightArea flex">
           <SearchIconAnimation search={search} icon={<Search24 />} onClick={onClickSearch} />
-          <IconButton icon={<Create24 />} />
           <IconButton icon={<Dehaze24 />} id="more" onClick={onClickMore} />
         </div>
       </ContainerHeader>
