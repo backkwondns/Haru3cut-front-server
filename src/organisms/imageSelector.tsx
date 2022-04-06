@@ -6,11 +6,11 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50%;
+  height: 60%;
   border: 1px solid #80808060;
   border-radius: 5px;
   overflow: hidden;
-  margin: 10px;
+  margin-top: 10px;
 `;
 
 const Image = styled.input`

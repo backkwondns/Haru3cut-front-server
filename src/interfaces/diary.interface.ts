@@ -16,4 +16,5 @@ export type creatableSelectorOnChangeType = (inputValue: MultiValue<Option>, act
 export interface newPostInterface extends imageSelectorInterface, checkItemInterface {
   tagList: Array<Option>;
   onChange: creatableSelectorOnChangeType;
+  onSubmit: () => void;
 }

@@ -50,10 +50,15 @@ function NewPostContainer() {
     }
   };
 
+  const onSubmit = () => {
+    console.log('submit');
+  };
+
   const onEvent = {
     onFileUpload,
     onClickFile,
   };
+
   return (
     <NewPost
       preview={selectedImage.preview}
@@ -62,6 +67,7 @@ function NewPostContainer() {
       toggleItem={toggleItem}
       tagList={tagOption}
       onChange={onChange}
+      onSubmit={onSubmit}
       onEvent={onEvent}
     />
   );
