@@ -1,14 +1,21 @@
 import { Avatar, IconButton, SidebarItem } from 'organisms';
 import {
+  AccountCircle24,
   Category24,
+  CategoryFilled24,
+  CheckList24,
   Create24,
   Dehaze24,
   Groups24,
+  Info24,
   Logout24,
+  ManageAccounts24,
   MoreHorizon24,
   PhotoCamera24,
   Search24,
+  Setting24,
   Star24,
+  Tag24,
 } from 'icons';
 import { Button, Divider, Input } from 'atoms';
 import React from 'react';
@@ -49,9 +56,20 @@ const TopSidebar = styled.div`
 
 const ListSidebar = styled.div`
    {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     flex: 1;
   }
+`;
+
+const NestedSidebar = styled.div`
+  ${({ moreSetting }: { moreSetting: boolean }) => {
+    return css`
+      ${moreSetting ? `height:100%` : `height:0px`};
+      ${moreSetting ? `` : `overflow-y:hidden`};
+    `;
+  }}
+  transition: 0.3s all ease-in-out;
 `;
 
 const BottomSidebar = styled.div`
@@ -133,9 +151,10 @@ const ModalFooter = styled.div`
     }
   }
 `;
+
 function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
-  const { nickName, searchValue, sidebar, search, onEvent } = props;
-  const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch } = onEvent;
+  const { nickName, searchValue, sidebar, moreSetting, search, onEvent } = props;
+  const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch, onMoreSetting } = onEvent;
 
   return (
     <>
@@ -180,7 +199,29 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             target="party"
           />
           <SidebarItem icon={<Star24 fill="white" className="sidebar-item-icon" />} text="보관" mobile={false} />
-          <SidebarItem icon={<MoreHorizon24 fill="white" className="sidebar-item-icon" />} text="설정" mobile={false} />
+          <SidebarItem
+            icon={<MoreHorizon24 fill="white" className="sidebar-item-icon" />}
+            text="설정"
+            mobile={false}
+            onClick={onMoreSetting}
+          />
+          <NestedSidebar moreSetting={moreSetting}>
+            <SidebarItem text="계정설정" icon={<Setting24 fill="white" className="sidebar-item-icon" />} nested />
+            <SidebarItem text="일반설정" icon={<AccountCircle24 fill="white" className="sidebar-item-icon" />} nested />
+            <SidebarItem
+              text="친구설정"
+              icon={<ManageAccounts24 fill="white" className="sidebar-item-icon" />}
+              nested
+            />
+            <SidebarItem
+              text="모임설정"
+              icon={<CategoryFilled24 fill="white" className="sidebar-item-icon" />}
+              nested
+            />
+            <SidebarItem text="태그설정" icon={<Tag24 fill="white" className="sidebar-item-icon" />} nested />
+            <SidebarItem text="목표설정" icon={<CheckList24 fill="white" className="sidebar-item-icon" />} nested />
+            <SidebarItem text="정보" icon={<Info24 fill="white" className="sidebar-item-icon" />} nested />
+          </NestedSidebar>
         </ListSidebar>
         <BottomSidebar className="flex-column-reverse full-width">
           <UserInfoSidebar className="flex">

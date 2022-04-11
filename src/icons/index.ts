@@ -26,6 +26,13 @@ import { ReactComponent as Star24 } from './star_24.svg';
 import { ReactComponent as Star48 } from './star_48.svg';
 import { ReactComponent as Close24 } from './close_24.svg';
 import { ReactComponent as Close48 } from './close_48.svg';
+import { ReactComponent as CheckList24 } from './checklist_24.svg';
+import { ReactComponent as Info24 } from './info_24.svg';
+import { ReactComponent as Tag24 } from './tag_24.svg';
+import { ReactComponent as Setting24 } from './settings_24.svg';
+import { ReactComponent as ManageAccounts24 } from './manage_accounts_24.svg';
+import { ReactComponent as CategoryFilled24 } from './category_filled_24.svg';
+import { ReactComponent as AccountCircle24 } from './account_circle_24.svg';
 
 export {
   ArrowBack24,
@@ -56,4 +63,11 @@ export {
   Star48,
   Close24,
   Close48,
+  CheckList24,
+  Info24,
+  Tag24,
+  Setting24,
+  ManageAccounts24,
+  CategoryFilled24,
+  AccountCircle24,
 };

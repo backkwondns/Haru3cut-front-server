@@ -1,4 +1,4 @@
-import { Diary, Friend, Party, Register, Login, Layout, NewPost } from 'pages';
+import { Diary, Friend, Party, Register, Login, Layout, NewPost, Setting } from 'pages';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ function Router() {
           <Route path="friend" element={<Friend />} />
           <Route path="party" element={<Party />} />
           <Route path="newpost" element={<NewPost />} />
+          <Route path="setting" element={<Setting />} />
         </Route>
       </Routes>
     </BrowserRouter>

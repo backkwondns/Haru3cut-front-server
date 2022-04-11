@@ -2,8 +2,8 @@ import { Input } from 'atoms';
 import { Avatar, IconButton } from 'organisms';
 import { Dehaze24, Search24 } from 'icons';
 import React from 'react';
-import { commonInterface, layoutInterface } from 'interfaces';
-import styled, { css, keyframes } from 'styled-components';
+import { layoutInterface } from 'interfaces';
+import styled, { keyframes } from 'styled-components';
 
 const slideTop = keyframes`
   from {
@@ -28,7 +28,9 @@ const SearchArea = styled.div`
   position: absolute;
   top: 70px;
   right: 0px;
-  width: 70%;
+  width: 100%;
+  height: 30px;
+  background-color: white;
 `;
 
 const SearchAreaAnimation = styled(SearchArea)`
@@ -40,35 +42,6 @@ const SearchInput = styled(Input)`
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   height: 70px;
-`;
-
-const SearchIcon = styled(IconButton)`
-  ${({ search }: { search: commonInterface.booleanType }) => {
-    return css`
-      ${search
-        ? `&:before {
-        content: '';
-        position: absolute;
-        top: 20px;
-        width: 0;
-        height: 0;
-        background-color: white;
-        border: 20px solid transparent;
-        border-right-color: rgba(0, 0, 0, 0.08); /* Black w/ opacity */
-        border-left: 0;
-        border-bottom: 0;
-        margin-top: 30px;
-        margin-right: 10px;
-        `
-        : null}
-    `;
-  }}
-}
-`;
-
-const SearchIconAnimation = styled(SearchIcon)`
-  animation-name: ${slideTop};
-  animation-duration: 0.1s;
 `;
 
 const IDArea = styled.div`
@@ -97,7 +70,7 @@ function HeaderMobile(props: layoutInterface.headerMobileInterface) {
           </IDArea>
         </div>
         <div className="rightArea flex">
-          <SearchIconAnimation search={search} icon={<Search24 />} onClick={onClickSearch} />
+          <IconButton icon={<Search24 />} onClick={onClickSearch} />
           <IconButton icon={<Dehaze24 />} id="more" onClick={onClickMore} />
         </div>
       </ContainerHeader>

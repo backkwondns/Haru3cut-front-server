@@ -12,6 +12,8 @@ export default class ThemeStore {
 
   sidebar = false;
 
+  moreSetting = false;
+
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
     this.rootStore = rootStore;
@@ -39,5 +41,13 @@ export default class ThemeStore {
 
   toggleSidebar() {
     this.sidebar = !this.sidebar;
+  }
+
+  get getMoreSetting() {
+    return this.moreSetting;
+  }
+
+  toggleMoreSetting() {
+    this.moreSetting = !this.moreSetting;
   }
 }

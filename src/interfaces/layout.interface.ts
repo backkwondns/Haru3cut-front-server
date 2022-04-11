@@ -4,12 +4,14 @@ export interface sidebarDesktopInterface {
   nickName: string;
   searchValue: string;
   sidebar: boolean;
+  moreSetting: boolean;
   search: boolean;
   onEvent: {
     onClickMore: () => void;
     onClickSearch: () => void;
     onEnterSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     onChangeSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onMoreSetting: () => void;
   };
 }
 
@@ -27,4 +29,6 @@ export interface headerMobileInterface {
 
 export interface sidebarMobileInterface {
   sidebar: boolean;
+  moreSetting: boolean;
+  onMoreSetting: () => void;
 }
