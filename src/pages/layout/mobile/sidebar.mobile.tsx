@@ -1,7 +1,21 @@
 import { SidebarItem } from 'organisms';
 import React from 'react';
 import { commonInterface, layoutInterface } from 'interfaces';
-import { Category48, Create48, Groups48, MoreHorizon48, PhotoCamera48, Star48 } from 'icons';
+import {
+  AccountCircle24,
+  Category48,
+  CategoryFilled24,
+  CheckList24,
+  Create48,
+  Groups48,
+  Info24,
+  ManageAccounts24,
+  MoreHorizon48,
+  PhotoCamera48,
+  Setting24,
+  Star48,
+  Tag24,
+} from 'icons';
 import styled, { css } from 'styled-components';
 
 const Sidebar = styled.div`
@@ -30,8 +44,17 @@ const ListSidebar = styled.div`
   }
 `;
 
+const NestedSidebar = styled.div`
+  ${({ moreSetting }: { moreSetting: boolean }) => {
+    return css`
+      ${moreSetting ? `height:100%` : `height:0px`};
+      ${moreSetting ? `` : `overflow-y:hidden`};
+    `;
+  }}
+  transition: 0.3s all ease-in-out;
+`;
 function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
-  const { sidebar } = props;
+  const { sidebar, moreSetting, onMoreSetting } = props;
   return (
     <Sidebar className="flex-column full-height" open={sidebar}>
       <ListSidebar>
@@ -63,9 +86,38 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
         <SidebarItem
           icon={<MoreHorizon48 fill="white" className="sidebar-item-icon" />}
           text="설정"
-          target="setting"
+          onClick={onMoreSetting}
           mobile
         />
+        <NestedSidebar moreSetting={moreSetting}>
+          <SidebarItem text="계정설정" icon={<Setting24 fill="white" className="sidebar-item-icon" />} mobile nested />
+          <SidebarItem
+            text="일반설정"
+            icon={<AccountCircle24 fill="white" className="sidebar-item-icon" />}
+            mobile
+            nested
+          />
+          <SidebarItem
+            text="친구설정"
+            icon={<ManageAccounts24 fill="white" className="sidebar-item-icon" />}
+            mobile
+            nested
+          />
+          <SidebarItem
+            text="모임설정"
+            icon={<CategoryFilled24 fill="white" className="sidebar-item-icon" />}
+            mobile
+            nested
+          />
+          <SidebarItem text="태그설정" icon={<Tag24 fill="white" className="sidebar-item-icon" />} mobile nested />
+          <SidebarItem
+            text="목표설정"
+            icon={<CheckList24 fill="white" className="sidebar-item-icon" />}
+            mobile
+            nested
+          />
+          <SidebarItem text="정보" icon={<Info24 fill="white" className="sidebar-item-icon" />} mobile nested />
+        </NestedSidebar>
       </ListSidebar>
     </Sidebar>
   );
