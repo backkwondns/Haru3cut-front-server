@@ -28,6 +28,10 @@ export default createGlobalStyle`
   .full-height {
     height: 100%;
   }
+  
+  div{
+    box-sizing: border-box;
+  }
   @media (max-width: 620px) {
     body {
       font-size: 1rem;

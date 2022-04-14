@@ -13,6 +13,8 @@ export default class DiaryStore {
 
   selectedTag: diaryInterface.Option[] = [];
 
+  posts: diaryInterface.post[] = [];
+
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
     this.rootStore = rootStore;
@@ -48,5 +50,13 @@ export default class DiaryStore {
 
   setSelectedTag(selectedTag: diaryInterface.Option[]) {
     this.selectedTag = selectedTag;
+  }
+
+  get getPosts() {
+    return this.posts;
+  }
+
+  setPosts(posts: diaryInterface.post[]) {
+    this.posts = posts;
   }
 }

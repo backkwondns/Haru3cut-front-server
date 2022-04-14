@@ -42,7 +42,7 @@ function RegisterContainer() {
         .map((value: string) => value === '')
         .every((bool) => bool === true)
     ) {
-      const result = fetchFunction.axiosPost(input);
+      const result = fetchFunction.axiosPost('register', input);
       console.log(result);
     }
   }, [helperText]);

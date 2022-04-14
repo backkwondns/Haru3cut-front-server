@@ -38,3 +38,8 @@ export interface dividerInterface {
   color?: string;
   height?: string;
 }
+
+export interface chipInterface {
+  color?: string;
+  size?: string;
+}

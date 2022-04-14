@@ -1,4 +1,3 @@
-import React from 'react';
 import { atomsInterface } from 'interfaces';
 import styled, { css } from 'styled-components';
 

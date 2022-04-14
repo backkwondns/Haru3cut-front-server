@@ -33,6 +33,9 @@ import { ReactComponent as Setting24 } from './settings_24.svg';
 import { ReactComponent as ManageAccounts24 } from './manage_accounts_24.svg';
 import { ReactComponent as CategoryFilled24 } from './category_filled_24.svg';
 import { ReactComponent as AccountCircle24 } from './account_circle_24.svg';
+import { ReactComponent as Visibility24 } from './visibility_24.svg';
+import { ReactComponent as VisibilityOff24 } from './visibilityOff_24.svg';
+import { ReactComponent as Edit24 } from './edit_24.svg';
 
 export {
   ArrowBack24,
@@ -70,4 +73,7 @@ export {
   ManageAccounts24,
   CategoryFilled24,
   AccountCircle24,
+  Visibility24,
+  VisibilityOff24,
+  Edit24,
 };

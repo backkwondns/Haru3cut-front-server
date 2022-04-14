@@ -249,7 +249,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
         // eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
         <Modal className="full-width full-height" onClick={onClickSearch} search={search}>
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-          <ModalContent onClick={(event: any) => event.stopPropagation()}>
+          <ModalContent onClick={(event: React.MouseEvent<HTMLDivElement>) => event.stopPropagation()}>
             <Input
               label="검색"
               helperText={undefined}

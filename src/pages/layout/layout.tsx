@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 import LayoutDesktop from './layout.desktop';
 import LayoutMobile from './layout.mobile';
 
