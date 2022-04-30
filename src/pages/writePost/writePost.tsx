@@ -15,8 +15,20 @@ const StyledButton = styled(Button)`
   font-size: 18px;
 `;
 
-function NewPost(props: diaryInterface.newPostInterface) {
-  const { preview, imageRef, checked, toggleItem, tagList, onChange, onSubmit, onEvent } = props;
+function WritePost(props: diaryInterface.writePostInterface) {
+  const {
+    preview,
+    imageRef,
+    checked,
+    toggleItem,
+    tagList,
+    selectedTag,
+    updateTarget,
+    onChange,
+    onSubmit,
+    onDelete,
+    onEvent,
+  } = props;
 
   return (
     <Container className="full-width full-height">
@@ -24,6 +36,7 @@ function NewPost(props: diaryInterface.newPostInterface) {
       <CheckItem value="공개" checked={checked} toggleItem={toggleItem} />
       <CreatableSelect
         options={tagList}
+        value={selectedTag}
         isMulti
         closeMenuOnSelect={false}
         isSearchable
@@ -33,8 +46,13 @@ function NewPost(props: diaryInterface.newPostInterface) {
       <StyledButton buttonType="filled" onClick={onSubmit}>
         작성
       </StyledButton>
+      {updateTarget ? (
+        <StyledButton buttonType="outlined" onClick={onDelete} color="#d32f2f">
+          삭제
+        </StyledButton>
+      ) : null}
     </Container>
   );
 }
 
-export default NewPost;
+export default WritePost;

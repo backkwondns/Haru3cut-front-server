@@ -6,7 +6,9 @@ function HeaderMobileContainer() {
   const rootStore = useContext(MobXProviderContext);
   const searchValue = rootStore.themeStore.getSearch;
   const [search, setSearch] = useState(false);
-  const nickName = '아이디는최대10자리';
+  const nickName = rootStore.accountStore.getNickName;
+  const nickNameTag = rootStore.accountStore.getNickNameTag;
+  const avatar = rootStore.themeStore.getAvatar;
 
   const onClickSearch = () => {
     setSearch((prevState) => !prevState);
@@ -34,7 +36,16 @@ function HeaderMobileContainer() {
     onEnterSearch,
     onChangeSearch,
   };
-  return <HeaderMobile nickName={nickName} search={search} searchValue={searchValue} onEvent={onEvent} />;
+  return (
+    <HeaderMobile
+      nickName={nickName}
+      nickNameTag={nickNameTag}
+      avatar={avatar}
+      search={search}
+      searchValue={searchValue}
+      onEvent={onEvent}
+    />
+  );
 }
 
 export default observer(HeaderMobileContainer);

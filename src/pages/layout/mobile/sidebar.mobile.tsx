@@ -61,7 +61,7 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
         <SidebarItem
           icon={<Create48 fill="white" className="sidebar-item-icon" />}
           text="작성"
-          target="newpost"
+          target="writepost"
           mobile
         />
         <SidebarItem

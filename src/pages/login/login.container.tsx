@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
 import styled, { css } from 'styled-components';
-import { commonInterface } from 'interfaces/index';
+import { commonInterface } from 'interfaces';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import LoginDesktop from './login.desktop';
 import LoginMobile from './login.mobile';
+import { axiosPost } from '../../libs/fetchFunction';
 
 const Container = styled.div`
   ${({ height }: { height: commonInterface.heightType }) => {
@@ -16,6 +19,7 @@ const Container = styled.div`
 function LoginContainer() {
   const rootStore = useContext(MobXProviderContext);
   const { width, height } = rootStore.themeStore.getWindowSize;
+  const navigator = useNavigate();
 
   const [input, setInput] = useState({
     email: '',
@@ -27,8 +31,23 @@ function LoginContainer() {
     setInput({ ...input, [name]: value });
   };
 
-  const onClickLogin = () => {
-    console.log('login process');
+  const onClickLogin = async () => {
+    const result = await axiosPost<commonInterface.loginResponse>('account/login', input);
+    if (result.status === 200) {
+      rootStore.accountStore.setNickName(result.result.nickName);
+      rootStore.accountStore.setNickNameTag(result.result.nickNameTag);
+      rootStore.accountStore.setEmail(result.result.email);
+      rootStore.accountStore.setPhoneNumber(result.result.phoneNumber);
+      rootStore.accountStore.setFriendList(result.result.friendList);
+      rootStore.accountStore.setSavedPost(result.result.savedPost);
+      rootStore.themeStore.setLanguage(result.result.setting.language);
+      rootStore.themeStore.setMode(result.result.setting.mode);
+      rootStore.themeStore.setAvatar(result.result.setting.avatar);
+      toast.success(result.message);
+      navigator('/diary');
+    } else {
+      toast.error(result.message);
+    }
   };
 
   return (

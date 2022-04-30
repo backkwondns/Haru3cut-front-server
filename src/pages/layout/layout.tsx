@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 import LayoutDesktop from './layout.desktop';
 import LayoutMobile from './layout.mobile';
 
 function layout() {
   const rootStore = useContext(MobXProviderContext);
   const { width } = rootStore.themeStore.getWindowSize;
+
+  if (!rootStore.accountStore.getNickName) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div>

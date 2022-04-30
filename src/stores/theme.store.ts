@@ -8,11 +8,17 @@ export default class ThemeStore {
 
   windowSize: themeInterface.sizeInterface = { width: 0, height: 0 };
 
-  search = '';
+  search!: string;
 
   sidebar = false;
 
   moreSetting = false;
+
+  language!: string;
+
+  mode!: 'dark' | 'light' | 'system';
+
+  avatar!: string;
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
@@ -49,5 +55,29 @@ export default class ThemeStore {
 
   toggleMoreSetting() {
     this.moreSetting = !this.moreSetting;
+  }
+
+  get getLanguage(): string {
+    return this.language;
+  }
+
+  setLanguage(value: string) {
+    this.language = value;
+  }
+
+  get getMode(): 'dark' | 'light' | 'system' {
+    return this.mode;
+  }
+
+  setMode(value: 'dark' | 'light' | 'system') {
+    this.mode = value;
+  }
+
+  get getAvatar(): string {
+    return this.avatar;
+  }
+
+  setAvatar(value: string) {
+    this.avatar = value;
   }
 }

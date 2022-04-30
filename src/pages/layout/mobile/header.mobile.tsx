@@ -57,16 +57,16 @@ const IDArea = styled.div`
 `;
 
 function HeaderMobile(props: layoutInterface.headerMobileInterface) {
-  const { nickName, searchValue, search, onEvent } = props;
+  const { nickName, nickNameTag, avatar, searchValue, search, onEvent } = props;
   const { onClickSearch, onClickMore, onEnterSearch, onChangeSearch } = onEvent;
   return (
     <>
       <ContainerHeader className="flex">
         <div className="leftArea flex">
-          <Avatar avatar="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/431.jpg" />
+          <Avatar avatar={avatar} />
           <IDArea className="flex-column">
             <span className={`id ${nickName.length >= 7 ? 'long' : ''}`}>{nickName}</span>
-            <span className="id-number">#1234</span>
+            <span className="id-number">#{nickNameTag}</span>
           </IDArea>
         </div>
         <div className="rightArea flex">

@@ -153,7 +153,7 @@ const ModalFooter = styled.div`
 `;
 
 function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
-  const { nickName, searchValue, sidebar, moreSetting, search, onEvent } = props;
+  const { nickName, nickNameTag, avatar, searchValue, sidebar, moreSetting, search, onEvent } = props;
   const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch, onMoreSetting } = onEvent;
 
   return (
@@ -178,7 +178,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             icon={<Create24 fill="white" className="sidebar-item-icon" />}
             text="작성"
             mobile={false}
-            target="newpost"
+            target="writepost"
           />
           <SidebarItem
             icon={<PhotoCamera24 fill="white" className="sidebar-item-icon" />}
@@ -227,13 +227,14 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
           <UserInfoSidebar className="flex">
             <Avatar
               className={`avatar ${sidebar ? 'open' : ''}`}
-              avatar="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/431.jpg"
+              avatar={avatar}
               width={sidebar ? '48px' : '40px'}
               height={sidebar ? '48px' : '40px'}
+              fill="white"
             />
             <IDArea className="flex-column">
               <span className={`id ${nickName.length >= 7 ? 'long' : ''}`}>{nickName}</span>
-              <span className="id-number">#1234</span>
+              <span className="id-number">#{nickNameTag}</span>
             </IDArea>
           </UserInfoSidebar>
           {sidebar ? (

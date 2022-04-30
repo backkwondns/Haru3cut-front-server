@@ -32,8 +32,12 @@ export default class DiaryStore {
     return this.privateCheck;
   }
 
-  setPrivateCheck() {
+  togglePrivateCheck() {
     this.privateCheck = !this.privateCheck;
+  }
+
+  setPrivateCheck(privatePost: boolean) {
+    this.privateCheck = privatePost;
   }
 
   get getTagList() {

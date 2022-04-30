@@ -7,6 +7,9 @@ function SidebarDesktopContainer() {
   const rootStore = useContext(MobXProviderContext);
   const searchValue = rootStore.themeStore.getSearch;
   const moreSetting = rootStore.themeStore.getMoreSetting;
+  const nickName = rootStore.accountStore.getNickName;
+  const nickNameTag = rootStore.accountStore.getNickNameTag;
+  const avatar = rootStore.themeStore.getAvatar;
   const [sidebar, setSidebar] = useState(false);
   const [search, setSearch] = useState(false);
   const onClickMore = () => setSidebar((prevState) => !prevState);
@@ -36,8 +39,6 @@ function SidebarDesktopContainer() {
 
   useHotkeys('command+k', () => setSearch(true));
 
-  const nickName = '아이디는최대10자리';
-
   const onEvent = {
     onClickMore,
     onClickSearch,
@@ -48,6 +49,8 @@ function SidebarDesktopContainer() {
   return (
     <SidebarDesktop
       nickName={nickName}
+      nickNameTag={nickNameTag}
+      avatar={avatar}
       searchValue={searchValue}
       sidebar={sidebar}
       moreSetting={moreSetting}

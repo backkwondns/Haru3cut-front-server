@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { organismsInterface } from 'interfaces';
 import styled from 'styled-components';
 import { IconButton } from 'organisms';
 import { useNavigate } from 'react-router-dom';
+import { MobXProviderContext } from 'mobx-react';
 
 const SidebarItemDesktop = styled(IconButton)`
    {
@@ -41,6 +42,7 @@ const NestedSidebarItemDesktop = styled(SidebarItemDesktop)`
 const NestedSidebarItemMobile = styled(SidebarItemMobile)``;
 
 function SidebarItem(props: organismsInterface.sidebarItemInterface) {
+  const rootStore = useContext(MobXProviderContext);
   const navigator = useNavigate();
   const {
     icon,
@@ -50,6 +52,7 @@ function SidebarItem(props: organismsInterface.sidebarItemInterface) {
     target = '',
     onClick = () => {
       navigator(target);
+      rootStore.themeStore.toggleSidebar();
     },
   } = props;
   return (

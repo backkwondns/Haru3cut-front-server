@@ -1,17 +1,26 @@
 import axios from 'axios';
+import { commonInterface } from 'interfaces';
 
-export const axiosPost = async (url: string, sendForm: object) => {
+export const axiosPost = async <responseInterface>(
+  url: string,
+  sendForm: object,
+  withFile?: boolean,
+): Promise<commonInterface.axiosResponseInterface<responseInterface>> => {
   try {
-    const result = await axios.post(`http://3.36.88.174:8000/${url}`, sendForm);
-    return result;
-  } catch (error) {
+    const result = await axios.post(
+      `${process.env.REACT_APP_SERVER}:${process.env.REACT_APP_SERVER_PORT}/${url}`,
+      sendForm,
+      withFile ? { headers: { 'content-type': 'multipart/form-data' } } : {},
+    );
+    return result.data;
+  } catch (error: any) {
     return error;
   }
 };
 
 export const axiosGet = async (url: string) => {
   try {
-    const result = await axios.get(`http://3.36.88.174:8000/${url}`);
+    const result = await axios.get(`${process.env.REACT_APP_SERVER}:${process.env.REACT_APP_SERVER_PORT}/${url}`);
     return result.data;
   } catch (error) {
     return error;

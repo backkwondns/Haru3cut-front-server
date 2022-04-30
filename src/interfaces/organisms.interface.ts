@@ -13,6 +13,7 @@ export interface avatarInterface {
   className?: string;
   width?: string;
   height?: string;
+  fill?: string;
   onClick?: () => void;
 }
 

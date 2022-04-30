@@ -14,10 +14,13 @@ export interface Option {
 
 export type creatableSelectorOnChangeType = (inputValue: MultiValue<Option>, action: ActionMeta<Option>) => void;
 
-export interface newPostInterface extends imageSelectorInterface, checkItemInterface {
+export interface writePostInterface extends imageSelectorInterface, checkItemInterface {
   tagList: Array<Option>;
+  selectedTag: Array<Option>;
+  updateTarget?: string;
   onChange: creatableSelectorOnChangeType;
   onSubmit: () => void;
+  onDelete?: () => void;
 }
 
 export type post = {

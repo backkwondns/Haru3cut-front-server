@@ -4,6 +4,7 @@ import { fetchFunction, stringFunction } from 'libs';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { commonInterface } from 'interfaces';
+import { toast } from 'react-toastify';
 import RegisterDesktop from './register.desktop';
 import RegisterMobile from './register.mobile';
 
@@ -42,8 +43,15 @@ function RegisterContainer() {
         .map((value: string) => value === '')
         .every((bool) => bool === true)
     ) {
-      const result = fetchFunction.axiosPost('register', input);
-      console.log(result);
+      (async () => {
+        const result = await fetchFunction.axiosPost('account/register', input);
+        if (result.status === 200) {
+          toast.success('회원가입 완료');
+          navigate('/login');
+        } else {
+          toast.error(result.message);
+        }
+      })();
     }
   }, [helperText]);
 

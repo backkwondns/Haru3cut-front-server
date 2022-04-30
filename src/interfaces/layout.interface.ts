@@ -2,6 +2,8 @@ import React from 'react';
 
 export interface sidebarDesktopInterface {
   nickName: string;
+  nickNameTag: string;
+  avatar: string;
   searchValue: string;
   sidebar: boolean;
   moreSetting: boolean;
@@ -17,6 +19,8 @@ export interface sidebarDesktopInterface {
 
 export interface headerMobileInterface {
   nickName: string;
+  nickNameTag: string;
+  avatar: string;
   searchValue: string;
   search: boolean;
   onEvent: {
