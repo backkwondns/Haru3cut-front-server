@@ -13,6 +13,7 @@ const AvatarButton = styled.button`
       border-radius: 100%;
       margin: 0px;
       padding: 0px;
+      box-sizing: border-box;
     `;
   }}
 `;
@@ -32,6 +33,7 @@ const AvatarDefaultImage = styled(Person48)`
       height: ${height};
       border-radius: 100%;
       border: 1px solid ${fill};
+      box-sizing: border-box;
       fill: ${fill};
     `;
   }}
@@ -43,6 +45,7 @@ const AvatarImage = styled.img`
       width: ${width};
       height: ${height};
       border-radius: 100%;
+      box-sizing: border-box;
       border: 1px solid #80808060;
     `;
   }}
