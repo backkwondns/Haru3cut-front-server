@@ -154,7 +154,7 @@ const ModalFooter = styled.div`
 
 function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
   const { nickName, nickNameTag, avatar, searchValue, sidebar, moreSetting, search, onEvent } = props;
-  const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch, onMoreSetting } = onEvent;
+  const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch, onMoreSetting, onLogout } = onEvent;
 
   return (
     <>
@@ -178,7 +178,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             icon={<Create24 fill="white" className="sidebar-item-icon" />}
             text="작성"
             mobile={false}
-            target="writepost"
+            target="writeDiary"
           />
           <SidebarItem
             icon={<PhotoCamera24 fill="white" className="sidebar-item-icon" />}
@@ -241,6 +241,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             <SidebarItem
               icon={<Logout24 fill="white" className="sidebar-item-icon" />}
               text="로그아웃"
+              onClick={onLogout}
               mobile={false}
             />
           ) : null}

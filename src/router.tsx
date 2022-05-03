@@ -1,4 +1,4 @@
-import { Diary, Friend, Party, Register, Login, Layout, WritePost, Setting, UpdatePost } from 'pages';
+import { Diary, Friend, Party, Register, Login, Layout, WriteDiary, Setting, UpdateDiary } from 'pages';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -43,18 +43,18 @@ function Router() {
             }
           />
           <Route
-            path="writePost"
+            path="writeDiary"
             element={
               <React.Suspense fallback={<>...</>}>
-                <WritePost />
+                <WriteDiary />
               </React.Suspense>
             }
           />
           <Route
-            path="writePost/:postID"
+            path="writeDiary/:postID"
             element={
               <React.Suspense fallback={<>...</>}>
-                <UpdatePost />
+                <UpdateDiary />
               </React.Suspense>
             }
           />

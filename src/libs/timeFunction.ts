@@ -11,7 +11,6 @@ export const hourSystem = (targetDate: Date) => {
   hour = hour || 12;
   const minute = targetDate.getMinutes() >= 10 ? targetDate.getMinutes() : `0${targetDate.getMinutes()}`;
   const AMPM = targetDate.getHours() > 12 ? 'PM' : 'AM';
-
   return `${AMPM} ${hour}:${minute}`;
 };
 
@@ -22,17 +21,17 @@ export const compareYear = (targetDate: Date) => {
   return thisYear - targetYear;
 };
 
-export const dateTimeCalc = (targetDate: string) => {
-  const datetime = new Date(targetDate);
+export const dateTimeCalc = (targetDate: number) => {
+  const datetime = new Date(targetDate * 1000);
   const resultCompare = compareWithToday(datetime);
   if (resultCompare === 0) {
     return hourSystem(datetime);
   }
   if (resultCompare === 1) {
-    return '어제';
+    return `어제 ${hourSystem(datetime)}`;
   }
   if (compareYear(datetime) !== 0) {
     return `${datetime.getFullYear()}/${datetime.getMonth() + 1}/${datetime.getDate()}`;
   }
-  return `${datetime.getMonth() + 1}/${datetime.getDate()}`;
+  return `${datetime.getMonth() + 1}/${datetime.getDate()} ${hourSystem(datetime)}`;
 };

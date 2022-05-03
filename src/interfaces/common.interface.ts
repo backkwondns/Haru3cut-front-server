@@ -13,7 +13,7 @@ export type loginResponse = {
     avatar: string;
   };
   friendList: string[];
-  savedPost: string[];
+  savedDiary: string[];
 };
 
 export interface axiosResponseInterface<responseType> {

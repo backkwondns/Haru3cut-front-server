@@ -4,9 +4,9 @@ import RootStore from './root.store';
 export default class AccountStore {
   rootStore: RootStore;
 
-  nickName!: string;
+  nickName!: string | undefined;
 
-  nickNameTag!: number;
+  nickNameTag!: number | undefined;
 
   email!: string;
 
@@ -25,7 +25,7 @@ export default class AccountStore {
     return this.nickName;
   }
 
-  setNickName(nickName: string) {
+  setNickName(nickName: string | undefined) {
     this.nickName = nickName;
   }
 
@@ -33,7 +33,7 @@ export default class AccountStore {
     return this.nickNameTag;
   }
 
-  setNickNameTag(nickNameTag: number) {
+  setNickNameTag(nickNameTag: number | undefined) {
     this.nickNameTag = nickNameTag;
   }
 

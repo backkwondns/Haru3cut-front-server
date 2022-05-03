@@ -15,7 +15,7 @@ const StyledButton = styled(Button)`
   font-size: 18px;
 `;
 
-function WritePost(props: diaryInterface.writePostInterface) {
+function WriteDiary(props: diaryInterface.writeDiaryInterface) {
   const {
     preview,
     imageRef,
@@ -55,4 +55,4 @@ function WritePost(props: diaryInterface.writePostInterface) {
   );
 }
 
-export default WritePost;
+export default WriteDiary;

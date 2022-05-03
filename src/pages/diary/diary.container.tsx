@@ -19,7 +19,7 @@ function DiaryContainer() {
   }, []);
 
   const onEdit = (event: React.MouseEvent<SVGElement>) => {
-    navigator(`/writepost/${event.currentTarget.id}`);
+    navigator(`/writediary/${event.currentTarget.id}`);
   };
   return <Diary posts={posts} onEdit={onEdit} />;
 }

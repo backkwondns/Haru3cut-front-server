@@ -14,7 +14,7 @@ export interface Option {
 
 export type creatableSelectorOnChangeType = (inputValue: MultiValue<Option>, action: ActionMeta<Option>) => void;
 
-export interface writePostInterface extends imageSelectorInterface, checkItemInterface {
+export interface writeDiaryInterface extends imageSelectorInterface, checkItemInterface {
   tagList: Array<Option>;
   selectedTag: Array<Option>;
   updateTarget?: string;
@@ -31,8 +31,8 @@ export type post = {
   tag: string[];
   image: string;
   privatePost: boolean;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: number;
+  updatedAt: number;
 };
 
 export interface postInterface {
