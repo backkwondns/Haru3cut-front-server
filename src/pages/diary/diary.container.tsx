@@ -3,25 +3,33 @@ import { fetchFunction } from 'libs';
 import { MobXProviderContext, observer } from 'mobx-react';
 import { useNavigate } from 'react-router-dom';
 import { diaryInterface } from 'interfaces';
+import { NonDiary } from 'atoms';
+import { toast } from 'react-toastify';
 import Diary from './diary';
 
 function DiaryContainer() {
   const rootStore = useContext(MobXProviderContext);
   const navigator = useNavigate();
-  const nickName = rootStore.accountStore.getNickName;
-  const nickNameTag = rootStore.accountStore.getNickNameTag;
-  const posts = rootStore.diaryStore.getPosts;
+  const diary = rootStore.diaryStore.getDiary;
+
   useEffect(() => {
-    (async () => {
-      const result = await fetchFunction.axiosPost<diaryInterface.post[]>('post/getMyDiary', { nickName, nickNameTag });
-      rootStore.diaryStore.setPosts(result.result);
-    })();
+    const sendForm = {
+      nickName: rootStore.accountStore.getNickName,
+      nickNameTag: rootStore.accountStore.getNickNameTag,
+    };
+    fetchFunction.axiosPost<diaryInterface.diary[]>('diary/getMyDiary', sendForm).then((value) => {
+      if (value.status === 200) {
+        rootStore.diaryStore.setDiary(value.result);
+      } else if (value.status === 500) {
+        toast.error(value.message);
+      }
+    });
   }, []);
 
   const onEdit = (event: React.MouseEvent<SVGElement>) => {
-    navigator(`/writepost/${event.currentTarget.id}`);
+    navigator(`/writediary/${event.currentTarget.id}`);
   };
-  return <Diary posts={posts} onEdit={onEdit} />;
+  return diary.length ? <Diary diary={diary} onEdit={onEdit} /> : <NonDiary>아직 글이 없어요😢</NonDiary>;
 }
 
 export default observer(DiaryContainer);

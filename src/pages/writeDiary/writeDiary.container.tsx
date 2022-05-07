@@ -4,9 +4,9 @@ import { diaryInterface } from 'interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchFunction } from 'libs';
 import { toast } from 'react-toastify';
-import WritePost from './writePost';
+import WriteDiary from './writeDiary';
 
-function WritePostContainer() {
+function WriteDiaryContainer() {
   const rootStore = useContext(MobXProviderContext);
   const updateTarget = useParams().postID;
   const selectedImage = rootStore.diaryStore.getSelectedImage;
@@ -71,9 +71,9 @@ function WritePostContainer() {
     formData.append('nickNameTag', rootStore.accountStore.getNickNameTag);
     formData.append('image', selectedImage.imageFile);
     formData.append('tag', JSON.stringify(sendTag));
-    formData.append('privatePost', privateCheck);
+    formData.append('privateDiary', privateCheck);
 
-    fetchFunction.axiosPost('post/newDiary', formData, true).then((response) => {
+    fetchFunction.axiosPost('diary/newDiary', formData, true).then((response) => {
       if (response.status === 200) {
         toast.success('일기 작성 완료');
         navigator('/diary');
@@ -89,7 +89,7 @@ function WritePostContainer() {
   };
 
   return (
-    <WritePost
+    <WriteDiary
       preview={selectedImage.preview}
       imageRef={imageRef}
       checked={privateCheck}
@@ -103,4 +103,4 @@ function WritePostContainer() {
   );
 }
 
-export default observer(WritePostContainer);
+export default observer(WriteDiaryContainer);

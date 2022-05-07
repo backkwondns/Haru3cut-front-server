@@ -14,7 +14,7 @@ export interface Option {
 
 export type creatableSelectorOnChangeType = (inputValue: MultiValue<Option>, action: ActionMeta<Option>) => void;
 
-export interface writePostInterface extends imageSelectorInterface, checkItemInterface {
+export interface writeDiaryInterface extends imageSelectorInterface, checkItemInterface {
   tagList: Array<Option>;
   selectedTag: Array<Option>;
   updateTarget?: string;
@@ -23,24 +23,31 @@ export interface writePostInterface extends imageSelectorInterface, checkItemInt
   onDelete?: () => void;
 }
 
-export type post = {
+export type diary = {
   id: string;
   nickName: string;
   nickNameTag: string;
   avatar: string;
   tag: string[];
   image: string;
-  privatePost: boolean;
-  createdAt: string;
-  updatedAt: string;
+  privateDiary: boolean;
+  isSaved?: boolean;
+  createdAt: number;
+  updatedAt: number;
 };
 
 export interface postInterface {
-  data: post;
-  onEdit: (event: React.MouseEvent<SVGElement>) => void;
+  data: diary;
+  onEdit?: (event: React.MouseEvent<SVGElement>) => void;
+  onSave?: (event: React.MouseEvent<SVGElement>) => void;
 }
 
 export interface diaryInterface {
-  posts: post[];
+  diary: diary[];
   onEdit: (event: React.MouseEvent<SVGElement>) => void;
+}
+
+export interface friendInterface {
+  friendDiary: diary[];
+  onSave: (event: React.MouseEvent<SVGElement>) => void;
 }

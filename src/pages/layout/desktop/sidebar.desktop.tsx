@@ -14,7 +14,7 @@ import {
   PhotoCamera24,
   Search24,
   Setting24,
-  Star24,
+  StarOutlined24,
   Tag24,
 } from 'icons';
 import { Button, Divider, Input } from 'atoms';
@@ -154,7 +154,7 @@ const ModalFooter = styled.div`
 
 function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
   const { nickName, nickNameTag, avatar, searchValue, sidebar, moreSetting, search, onEvent } = props;
-  const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch, onMoreSetting } = onEvent;
+  const { onClickMore, onClickSearch, onEnterSearch, onChangeSearch, onMoreSetting, onLogout } = onEvent;
 
   return (
     <>
@@ -178,7 +178,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             icon={<Create24 fill="white" className="sidebar-item-icon" />}
             text="작성"
             mobile={false}
-            target="writepost"
+            target="writeDiary"
           />
           <SidebarItem
             icon={<PhotoCamera24 fill="white" className="sidebar-item-icon" />}
@@ -198,7 +198,11 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             mobile={false}
             target="party"
           />
-          <SidebarItem icon={<Star24 fill="white" className="sidebar-item-icon" />} text="보관" mobile={false} />
+          <SidebarItem
+            icon={<StarOutlined24 fill="white" className="sidebar-item-icon" />}
+            text="보관"
+            mobile={false}
+          />
           <SidebarItem
             icon={<MoreHorizon24 fill="white" className="sidebar-item-icon" />}
             text="설정"
@@ -241,6 +245,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             <SidebarItem
               icon={<Logout24 fill="white" className="sidebar-item-icon" />}
               text="로그아웃"
+              onClick={onLogout}
               mobile={false}
             />
           ) : null}

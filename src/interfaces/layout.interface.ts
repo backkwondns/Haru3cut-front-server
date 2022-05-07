@@ -14,6 +14,7 @@ export interface sidebarDesktopInterface {
     onEnterSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     onChangeSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onMoreSetting: () => void;
+    onLogout: () => void;
   };
 }
 

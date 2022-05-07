@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  #root{
+    font-family: KyoboHand;
+  }
   .flex-column {
     display: flex;
     flex-direction: column;

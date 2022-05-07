@@ -13,7 +13,7 @@ import {
   MoreHorizon48,
   PhotoCamera48,
   Setting24,
-  Star48,
+  StarOutlined48,
   Tag24,
 } from 'icons';
 import styled, { css } from 'styled-components';
@@ -61,7 +61,7 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
         <SidebarItem
           icon={<Create48 fill="white" className="sidebar-item-icon" />}
           text="작성"
-          target="writepost"
+          target="writeDiary"
           mobile
         />
         <SidebarItem
@@ -82,7 +82,7 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
           target="party"
           mobile
         />
-        <SidebarItem icon={<Star48 fill="white" className="sidebar-item-icon" />} text="보관" mobile />
+        <SidebarItem icon={<StarOutlined48 fill="white" className="sidebar-item-icon" />} text="보관" mobile />
         <SidebarItem
           icon={<MoreHorizon48 fill="white" className="sidebar-item-icon" />}
           text="설정"
