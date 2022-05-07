@@ -31,7 +31,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "plugin": ["styled-jsx/babel"]
   },
   "include": [
     "src",

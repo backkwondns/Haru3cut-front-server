@@ -21,9 +21,9 @@ function UpdateDiaryContainer() {
     const sendForm = {
       nickName: rootStore.accountStore.getNickName,
       nickNameTag: rootStore.accountStore.getNickNameTag,
-      postID: updateTarget,
+      diaryID: updateTarget,
     };
-    fetchFunction.axiosPost<diaryInterface.post>(`post/getOneDiary`, sendForm).then((value) => {
+    fetchFunction.axiosPost<diaryInterface.diary>(`diary/getOneDiary`, sendForm).then((value) => {
       if (value.status !== 200) {
         toast.error('잘못된 접근입니다.');
         navigator('/diary');
@@ -32,7 +32,7 @@ function UpdateDiaryContainer() {
       value.result.tag.forEach((value: string) => tagTmp.push({ value, label: value }));
       rootStore.diaryStore.setSelectedImage({}, value.result.image);
       rootStore.diaryStore.setSelectedTag(tagTmp);
-      rootStore.diaryStore.setPrivateCheck(value.result.privatePost);
+      rootStore.diaryStore.setPrivateCheck(value.result.privateDiary);
     });
   }, [updateTarget]);
 
@@ -83,9 +83,9 @@ function UpdateDiaryContainer() {
       formData.append('image', selectedImage.imageFile);
     }
     formData.append('tag', JSON.stringify(sendTag));
-    formData.append('privatePost', privateCheck);
+    formData.append('privateDiary', privateCheck);
 
-    fetchFunction.axiosPost('post/updateDiary', formData, true).then((response) => {
+    fetchFunction.axiosPost('diary/updateDiary', formData, true).then((response) => {
       if (response.status === 200) {
         toast.success('일기 수정 완료', { autoClose: 300 });
         navigator('/diary');
@@ -101,7 +101,7 @@ function UpdateDiaryContainer() {
       nickName: rootStore.accountStore.getNickName,
       nickNameTag: rootStore.accountStore.getNickNameTag,
     };
-    fetchFunction.axiosPost('post/deleteDiary', formData).then((response) => {
+    fetchFunction.axiosPost('diary/deleteDiary', formData).then((response) => {
       if (response.status === 200) {
         toast.success('일기 삭제 완료');
         navigator('/diary');

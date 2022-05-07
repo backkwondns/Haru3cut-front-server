@@ -14,7 +14,7 @@ export default class AccountStore {
 
   friendList!: string[];
 
-  savedPost!: string[];
+  savedDiary!: string[];
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
@@ -61,11 +61,11 @@ export default class AccountStore {
     this.friendList = value;
   }
 
-  get getSavedPost(): string[] {
-    return this.savedPost;
+  get getSavedDiary(): string[] {
+    return this.savedDiary;
   }
 
-  setSavedPost(value: string[]) {
-    this.savedPost = value;
+  setSavedDiary(value: string[]) {
+    this.savedDiary = value;
   }
 }

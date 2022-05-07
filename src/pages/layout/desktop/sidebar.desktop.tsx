@@ -14,7 +14,7 @@ import {
   PhotoCamera24,
   Search24,
   Setting24,
-  Star24,
+  StarOutlined24,
   Tag24,
 } from 'icons';
 import { Button, Divider, Input } from 'atoms';
@@ -198,7 +198,11 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             mobile={false}
             target="party"
           />
-          <SidebarItem icon={<Star24 fill="white" className="sidebar-item-icon" />} text="보관" mobile={false} />
+          <SidebarItem
+            icon={<StarOutlined24 fill="white" className="sidebar-item-icon" />}
+            text="보관"
+            mobile={false}
+          />
           <SidebarItem
             icon={<MoreHorizon24 fill="white" className="sidebar-item-icon" />}
             text="설정"

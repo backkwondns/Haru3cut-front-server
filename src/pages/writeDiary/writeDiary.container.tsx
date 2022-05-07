@@ -71,9 +71,9 @@ function WriteDiaryContainer() {
     formData.append('nickNameTag', rootStore.accountStore.getNickNameTag);
     formData.append('image', selectedImage.imageFile);
     formData.append('tag', JSON.stringify(sendTag));
-    formData.append('privatePost', privateCheck);
+    formData.append('privateDiary', privateCheck);
 
-    fetchFunction.axiosPost('post/newDiary', formData, true).then((response) => {
+    fetchFunction.axiosPost('diary/newDiary', formData, true).then((response) => {
       if (response.status === 200) {
         toast.success('일기 작성 완료');
         navigator('/diary');

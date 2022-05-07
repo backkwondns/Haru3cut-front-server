@@ -23,6 +23,8 @@ import { ReactComponent as Logout48 } from './logout_48.svg';
 import { ReactComponent as Favorite24 } from './favorite_24.svg';
 import { ReactComponent as Favorite48 } from './favorite_48.svg';
 import { ReactComponent as Star24 } from './star_24.svg';
+import { ReactComponent as StarOutlined24 } from './star_outlined_24.svg';
+import { ReactComponent as StarOutlined48 } from './star_outlined_48.svg';
 import { ReactComponent as Star48 } from './star_48.svg';
 import { ReactComponent as Close24 } from './close_24.svg';
 import { ReactComponent as Close48 } from './close_48.svg';
@@ -63,6 +65,8 @@ export {
   Favorite24,
   Favorite48,
   Star24,
+  StarOutlined24,
+  StarOutlined48,
   Star48,
   Close24,
   Close48,

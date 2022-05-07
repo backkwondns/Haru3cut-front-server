@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Avatar } from 'organisms';
 import { Chip } from 'atoms';
 import { v4 as uuid } from 'uuid';
-import { Edit24, Visibility24, VisibilityOff24 } from 'icons';
+import { Edit24, Star24, Visibility24, VisibilityOff24 } from 'icons';
 import { timeFunction } from '../libs';
 
 const Container = styled.div`
@@ -41,7 +41,7 @@ const TimeContainer = styled.div`
   margin-left: 20px;
 `;
 
-const PrivateIconContainer = styled.div`
+const TopRightContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,8 +69,8 @@ const PostImage = styled.img`
 `;
 
 function Post(props: diaryInterface.postInterface) {
-  const { data, onEdit } = props;
-  const { id, nickName, nickNameTag, avatar, tag, image, privatePost, createdAt } = data;
+  const { data, onEdit, onSave } = props;
+  const { id, nickName, nickNameTag, avatar, tag, image, isSaved, privateDiary, createdAt } = data;
   return (
     <Container>
       <HeaderPost className="full-width flex">
@@ -80,10 +80,16 @@ function Post(props: diaryInterface.postInterface) {
           <span>#{nickNameTag}</span>
         </IDArea>
         <TimeContainer>{timeFunction.dateTimeCalc(createdAt)}</TimeContainer>
-        <PrivateIconContainer>
-          {privatePost ? <Visibility24 fill="#000" /> : <VisibilityOff24 fill="#60606080" />}
-          <Edit24 id={id} onClick={onEdit} />
-        </PrivateIconContainer>
+        {onEdit ? (
+          <TopRightContainer>
+            {privateDiary ? <Visibility24 fill="#000" /> : <VisibilityOff24 fill="#60606080" />}
+            <Edit24 id={id} onClick={onEdit} />
+          </TopRightContainer>
+        ) : (
+          <TopRightContainer>
+            <Star24 id={id} onClick={onSave} fill={isSaved ? 'rgb(249,228,1)' : '#80808060'} />
+          </TopRightContainer>
+        )}
       </HeaderPost>
       <TagContainer>
         {tag.map((tagName) => {
