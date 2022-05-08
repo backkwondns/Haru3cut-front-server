@@ -82,7 +82,12 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
           target="party"
           mobile
         />
-        <SidebarItem icon={<StarOutlined48 fill="white" className="sidebar-item-icon" />} text="보관" mobile />
+        <SidebarItem
+          icon={<StarOutlined48 fill="white" className="sidebar-item-icon" />}
+          target="save"
+          text="보관"
+          mobile
+        />
         <SidebarItem
           icon={<MoreHorizon48 fill="white" className="sidebar-item-icon" />}
           text="설정"

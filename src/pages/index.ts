@@ -7,5 +7,6 @@ import WriteDiary from './writeDiary/writeDiary.container';
 import UpdateDiary from './writeDiary/updateDiary.container';
 import Setting from './setting/setting.container';
 import Layout from './layout/layout';
+import Save from './save/save.container';
 
-export { Login, Register, Party, Friend, Diary, WriteDiary, UpdateDiary, Setting, Layout };
+export { Login, Register, Party, Friend, Diary, WriteDiary, UpdateDiary, Setting, Layout, Save };

@@ -1,4 +1,4 @@
-import { makeAutoObservable, toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { diaryInterface } from 'interfaces';
 import RootStore from './root.store';
 
@@ -16,6 +16,8 @@ export default class DiaryStore {
   diary: diaryInterface.diary[] = [];
 
   friendDiary: diaryInterface.diary[] = [];
+
+  saveDiary: diaryInterface.diary[] = [];
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
@@ -80,5 +82,17 @@ export default class DiaryStore {
       ...this.friendDiary[targetDiary],
       isSaved: !this.friendDiary[targetDiary].isSaved,
     };
+  }
+
+  get getSaveDiary() {
+    return this.saveDiary;
+  }
+
+  setSaveDiary(savedDiary: diaryInterface.diary[]) {
+    this.saveDiary = savedDiary;
+  }
+
+  toggleSavedDiary(diaryID: string) {
+    this.saveDiary = this.saveDiary.filter((value: diaryInterface.diary) => value.id !== diaryID);
   }
 }

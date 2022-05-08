@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { useNavigate } from 'react-router-dom';
 import SidebarDesktop from './sidebar.desktop';
 
 function SidebarDesktopContainer() {
   const rootStore = useContext(MobXProviderContext);
-  const navigator = useNavigate();
   const searchValue = rootStore.themeStore.getSearch;
   const moreSetting = rootStore.themeStore.getMoreSetting;
   const nickName = rootStore.accountStore.getNickName;

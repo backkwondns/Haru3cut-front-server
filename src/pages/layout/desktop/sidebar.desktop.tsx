@@ -201,6 +201,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
           <SidebarItem
             icon={<StarOutlined24 fill="white" className="sidebar-item-icon" />}
             text="보관"
+            target="save"
             mobile={false}
           />
           <SidebarItem
