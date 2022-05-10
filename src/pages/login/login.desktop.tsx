@@ -29,14 +29,21 @@ const Title = styled.span`
 `;
 
 function LoginDesktop(props: loginInterface.loginInterface): JSX.Element {
-  const { input, onChangeInput, onClickLogin } = props;
+  const { input, onChangeInput, onClickLogin, onEnter } = props;
 
   return (
     <LayoutContainer className="flex-column center full-width">
       <Title>하루세컷</Title>
       <Container className="flex-column center full-height">
         <Input label="Email" name="email" value={input.email} onChange={onChangeInput} />
-        <Input label="암호" name="passWord" value={input.passWord} type="password" onChange={onChangeInput} />
+        <Input
+          label="암호"
+          name="passWord"
+          value={input.passWord}
+          type="password"
+          onChange={onChangeInput}
+          onPressEnter={onEnter}
+        />
         <ButtonContainer className="flex full-width ">
           <NavButton link="/register" buttonType="outlined" text="회원가입" style={{ marginRight: '10px' }} />
           <Button className="button" buttonType="filled" onClick={onClickLogin} style={{ marginLeft: '10px' }}>

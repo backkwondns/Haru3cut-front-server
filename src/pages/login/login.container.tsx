@@ -50,12 +50,18 @@ function LoginContainer() {
     }
   };
 
+  const onEnter = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      onClickLogin();
+    }
+  };
+
   return (
     <Container height={height}>
       {width > 620 ? (
-        <LoginDesktop input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} />
+        <LoginDesktop input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} onEnter={onEnter} />
       ) : (
-        <LoginMobile input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} />
+        <LoginMobile input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} onEnter={onEnter} />
       )}
     </Container>
   );

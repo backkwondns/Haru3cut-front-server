@@ -22,7 +22,7 @@ const ButtonContainer = styled.div`
 `;
 
 function LoginMobile(props: loginInterface.loginInterface): JSX.Element {
-  const { input, onChangeInput, onClickLogin } = props;
+  const { input, onChangeInput, onClickLogin, onEnter } = props;
 
   return (
     <LayoutContainer className="flex-column center full-width">
@@ -36,6 +36,7 @@ function LoginMobile(props: loginInterface.loginInterface): JSX.Element {
           value={input.passWord}
           type="password"
           onChange={onChangeInput}
+          onPressEnter={onEnter}
         />
         <ButtonContainer className="flex-column full-width">
           <NavButton link="/register" buttonType="filled" text="회원가입" />
