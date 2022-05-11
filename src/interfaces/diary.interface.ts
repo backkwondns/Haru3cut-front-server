@@ -51,3 +51,8 @@ export interface friendInterface {
   friendDiary: diary[];
   onSave: (event: React.MouseEvent<SVGElement>) => void;
 }
+
+export interface saveDiaryInterface {
+  saveDiary: diary[];
+  onSave: (event: React.MouseEvent<SVGElement>) => void;
+}

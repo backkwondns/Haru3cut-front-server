@@ -8,11 +8,14 @@ import LayoutMobile from './layout.mobile';
 function layout() {
   const rootStore = useContext(MobXProviderContext);
   const location = useLocation();
+  const history = useLocation();
   const { width } = rootStore.themeStore.getWindowSize;
   rootStore.themeStore.setLocation(location.pathname);
 
   if (!rootStore.accountStore.getNickName) {
-    toast.info('로그아웃 되었습니다');
+    if (history.pathname !== '/') {
+      toast.info('로그아웃 되었습니다');
+    }
     return <Navigate to="/login" />;
   }
 
