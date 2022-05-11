@@ -36,4 +36,5 @@ export interface sidebarMobileInterface {
   sidebar: boolean;
   moreSetting: boolean;
   onMoreSetting: () => void;
+  onLogout: () => void;
 }

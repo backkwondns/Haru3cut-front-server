@@ -5,4 +5,5 @@ export interface loginInterface {
   };
   onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClickLogin: () => void;
+  onEnter: (event: React.KeyboardEvent) => void;
 }

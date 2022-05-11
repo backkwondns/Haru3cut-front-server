@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components';
 import { commonInterface } from 'interfaces';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { axiosPost } from 'libs/fetchFunction';
 import LoginDesktop from './login.desktop';
 import LoginMobile from './login.mobile';
-import { axiosPost } from '../../libs/fetchFunction';
 
 const Container = styled.div`
   ${({ height }: { height: commonInterface.heightType }) => {
@@ -50,12 +50,18 @@ function LoginContainer() {
     }
   };
 
+  const onEnter = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      onClickLogin();
+    }
+  };
+
   return (
     <Container height={height}>
       {width > 620 ? (
-        <LoginDesktop input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} />
+        <LoginDesktop input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} onEnter={onEnter} />
       ) : (
-        <LoginMobile input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} />
+        <LoginMobile input={input} onChangeInput={onChangeInput} onClickLogin={onClickLogin} onEnter={onEnter} />
       )}
     </Container>
   );
