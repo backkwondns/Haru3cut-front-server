@@ -1,3 +1,4 @@
+import { ReactComponent as Add24 } from './add_24.svg';
 import { ReactComponent as ArrowBack24 } from './arrowBackIos_24.svg';
 import { ReactComponent as ArrowForward24 } from './arrowForwardIos_24.svg';
 import { ReactComponent as MoreHorizon24 } from './moreHorizon_24.svg';
@@ -80,4 +81,5 @@ export {
   Visibility24,
   VisibilityOff24,
   Edit24,
+  Add24,
 };

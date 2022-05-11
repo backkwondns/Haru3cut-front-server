@@ -1,6 +1,6 @@
 import { Input } from 'atoms';
 import { Avatar, IconButton } from 'organisms';
-import { Dehaze24, Search24 } from 'icons';
+import { Add24, Dehaze24, Logout24, Search24 } from 'icons';
 import React from 'react';
 import { layoutInterface } from 'interfaces';
 import styled, { keyframes } from 'styled-components';
@@ -57,8 +57,8 @@ const IDArea = styled.div`
 `;
 
 function HeaderMobile(props: layoutInterface.headerMobileInterface) {
-  const { nickName, nickNameTag, avatar, searchValue, search, onEvent } = props;
-  const { onClickSearch, onClickMore, onEnterSearch, onChangeSearch } = onEvent;
+  const { nickName, nickNameTag, avatar, searchValue, search, location, onEvent } = props;
+  const { onClickSearch, onClickMore, onEnterSearch, onChangeSearch, onClickAdd } = onEvent;
   return (
     <>
       <ContainerHeader className="flex">
@@ -70,6 +70,9 @@ function HeaderMobile(props: layoutInterface.headerMobileInterface) {
           </IDArea>
         </div>
         <div className="rightArea flex">
+          {location === '/friend' || location === '/party' ? (
+            <IconButton icon={<Add24 />} onClick={onClickAdd} />
+          ) : null}
           <IconButton icon={<Search24 />} onClick={onClickSearch} />
           <IconButton icon={<Dehaze24 />} id="more" onClick={onClickMore} />
         </div>

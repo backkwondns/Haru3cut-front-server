@@ -24,11 +24,13 @@ export interface headerMobileInterface {
   avatar: string;
   searchValue: string;
   search: boolean;
+  location: string;
   onEvent: {
     onClickSearch: () => void;
     onClickMore: (event: React.MouseEvent<HTMLButtonElement>) => void;
     onEnterSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     onChangeSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onClickAdd: () => void;
   };
 }
 

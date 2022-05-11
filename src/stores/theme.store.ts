@@ -8,6 +8,8 @@ export default class ThemeStore {
 
   windowSize: themeInterface.sizeInterface = { width: 0, height: 0 };
 
+  location!: string;
+
   search!: string;
 
   sidebar = false;
@@ -31,6 +33,14 @@ export default class ThemeStore {
 
   setWindowSize(size: themeInterface.sizeInterface) {
     this.windowSize = size;
+  }
+
+  get getLocation() {
+    return this.location;
+  }
+
+  setLocation(location: string) {
+    this.location = location;
   }
 
   get getSearch() {
