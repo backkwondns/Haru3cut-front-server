@@ -39,7 +39,9 @@ const NestedSidebarItemDesktop = styled(SidebarItemDesktop)`
   }
 `;
 
-const NestedSidebarItemMobile = styled(SidebarItemMobile)``;
+const NestedSidebarItemMobile = styled(SidebarItemMobile)`
+  font-size: 16px;
+`;
 
 function SidebarItem(props: organismsInterface.sidebarItemInterface) {
   const rootStore = useContext(MobXProviderContext);

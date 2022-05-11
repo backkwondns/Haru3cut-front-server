@@ -9,6 +9,7 @@ import {
   Create48,
   Groups48,
   Info24,
+  Logout24,
   ManageAccounts24,
   MoreHorizon48,
   PhotoCamera48,
@@ -39,7 +40,7 @@ const Sidebar = styled.div`
 
 const ListSidebar = styled.div`
    {
-    overflow: hidden;
+    overflow: auto;
     flex: 1;
   }
 `;
@@ -47,14 +48,14 @@ const ListSidebar = styled.div`
 const NestedSidebar = styled.div`
   ${({ moreSetting }: { moreSetting: boolean }) => {
     return css`
-      ${moreSetting ? `height:100%` : `height:0px`};
+      ${moreSetting ? `` : `height:0px`};
       ${moreSetting ? `` : `overflow-y:hidden`};
     `;
   }}
   transition: 0.3s all ease-in-out;
 `;
 function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
-  const { sidebar, moreSetting, onMoreSetting } = props;
+  const { sidebar, moreSetting, onMoreSetting, onLogout } = props;
   return (
     <Sidebar className="flex-column full-height" open={sidebar}>
       <ListSidebar>
@@ -122,6 +123,13 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
             nested
           />
           <SidebarItem text="정보" icon={<Info24 fill="white" className="sidebar-item-icon" />} mobile nested />
+          <SidebarItem
+            text="로그아웃"
+            icon={<Logout24 fill="white" className="sidebar-item-icon" />}
+            onClick={onLogout}
+            mobile
+            nested
+          />
         </NestedSidebar>
       </ListSidebar>
     </Sidebar>

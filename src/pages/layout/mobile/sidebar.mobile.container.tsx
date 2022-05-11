@@ -9,7 +9,14 @@ function SidebarMobileContainer() {
   const onMoreSetting = () => {
     rootStore.themeStore.toggleMoreSetting();
   };
-  return <SidebarMobile sidebar={sidebar} moreSetting={moreSetting} onMoreSetting={onMoreSetting} />;
+
+  const onLogout = () => {
+    rootStore.accountStore.setNickName(undefined);
+    rootStore.accountStore.setNickNameTag(undefined);
+  };
+  return (
+    <SidebarMobile sidebar={sidebar} moreSetting={moreSetting} onMoreSetting={onMoreSetting} onLogout={onLogout} />
+  );
 }
 
 export default observer(SidebarMobileContainer);

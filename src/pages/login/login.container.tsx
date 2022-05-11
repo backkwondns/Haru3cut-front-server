@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components';
 import { commonInterface } from 'interfaces';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { axiosPost } from 'libs/fetchFunction';
 import LoginDesktop from './login.desktop';
 import LoginMobile from './login.mobile';
-import { axiosPost } from '../../libs/fetchFunction';
 
 const Container = styled.div`
   ${({ height }: { height: commonInterface.heightType }) => {
