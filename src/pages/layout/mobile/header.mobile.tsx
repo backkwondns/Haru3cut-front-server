@@ -1,9 +1,9 @@
 import { Input } from 'atoms';
-import { Avatar, IconButton } from 'organisms';
-import { Add24, Dehaze24, Logout24, Search24 } from 'icons';
+import { Avatar, IconButton, UserInfoArea } from 'organisms';
+import { Add24, Dehaze24, Search24 } from 'icons';
 import React from 'react';
 import { layoutInterface } from 'interfaces';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const slideTop = keyframes`
   from {
@@ -44,34 +44,25 @@ const SearchInput = styled(Input)`
   height: 70px;
 `;
 
-const IDArea = styled.div`
-  margin-left: 10px;
-  justify-content: center;
-  .id.long {
-    font-size: 14px;
-  }
-  .id-number {
-    font-size: 13px;
-    color: #00000060;
-  }
+const AddIcon = styled(IconButton)`
+  ${({ open }: { open: boolean }) => {
+    return css`
+      transition: 0.2s all ease;
+      transform: rotate(${open ? '45deg' : '0deg'});
+    `;
+  }}
 `;
 
 function HeaderMobile(props: layoutInterface.headerMobileInterface) {
-  const { nickName, nickNameTag, avatar, searchValue, search, location, onEvent } = props;
+  const { nickName, nickNameTag, avatar, searchValue, search, location, add, onEvent } = props;
   const { onClickSearch, onClickMore, onEnterSearch, onChangeSearch, onClickAdd } = onEvent;
   return (
     <>
       <ContainerHeader className="flex">
-        <div className="leftArea flex">
-          <Avatar avatar={avatar} />
-          <IDArea className="flex-column">
-            <span className={`id ${nickName.length >= 7 ? 'long' : ''}`}>{nickName}</span>
-            <span className="id-number">#{nickNameTag}</span>
-          </IDArea>
-        </div>
+        <UserInfoArea nickName={nickName} nickNameTag={nickNameTag} avatar={avatar} />
         <div className="rightArea flex">
           {location === '/friend' || location === '/party' ? (
-            <IconButton icon={<Add24 />} onClick={onClickAdd} />
+            <AddIcon open={add} icon={<Add24 />} onClick={onClickAdd} />
           ) : null}
           <IconButton icon={<Search24 />} onClick={onClickSearch} />
           <IconButton icon={<Dehaze24 />} id="more" onClick={onClickMore} />

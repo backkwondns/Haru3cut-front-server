@@ -26,7 +26,7 @@ export interface writeDiaryInterface extends imageSelectorInterface, checkItemIn
 export type diary = {
   id: string;
   nickName: string;
-  nickNameTag: string;
+  nickNameTag: number;
   avatar: string;
   tag: string[];
   image: string;
@@ -36,20 +36,9 @@ export type diary = {
   updatedAt: number;
 };
 
-export interface postInterface {
-  data: diary;
-  onEdit?: (event: React.MouseEvent<SVGElement>) => void;
-  onSave?: (event: React.MouseEvent<SVGElement>) => void;
-}
-
 export interface diaryInterface {
   diary: diary[];
   onEdit: (event: React.MouseEvent<SVGElement>) => void;
-}
-
-export interface friendInterface {
-  friendDiary: diary[];
-  onSave: (event: React.MouseEvent<SVGElement>) => void;
 }
 
 export interface saveDiaryInterface {

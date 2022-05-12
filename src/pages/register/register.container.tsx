@@ -61,7 +61,7 @@ function RegisterContainer() {
   };
 
   const onClickSubmit = async () => {
-    const result = stringFunction.validateInput({
+    const result = stringFunction.validateRegisterInput({
       nickName: input.nickName,
       email: input.email,
       passWord: input.passWord,

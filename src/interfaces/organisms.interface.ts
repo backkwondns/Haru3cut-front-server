@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+import { diary } from 'interfaces/diary.interface';
 import { buttonInterface } from './atoms.interface';
 
 export interface iconButtonInterface extends buttonInterface {
@@ -47,4 +48,15 @@ export interface checkItemInterface {
   value?: string;
   checked: boolean;
   toggleItem: () => void;
+}
+export interface postInterface {
+  data: diary;
+  onEdit?: (event: React.MouseEvent<SVGElement>) => void;
+  onSave?: (event: React.MouseEvent<SVGElement>) => void;
+}
+
+export interface userInfoInterface {
+  nickName: string;
+  nickNameTag: number;
+  avatar: string;
 }

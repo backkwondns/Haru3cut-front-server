@@ -10,6 +10,7 @@ function HeaderMobileContainer() {
   const nickNameTag = rootStore.accountStore.getNickNameTag;
   const avatar = rootStore.themeStore.getAvatar;
   const location = rootStore.themeStore.getLocation;
+  const add = rootStore.themeStore.getAdd;
 
   const onClickSearch = () => {
     setSearch((prevState) => !prevState);
@@ -32,8 +33,9 @@ function HeaderMobileContainer() {
   };
 
   const onClickAdd = () => {
-    console.log('asdf');
+    rootStore.themeStore.toggleAdd();
   };
+
   const onEvent = {
     onClickSearch,
     onClickMore,
@@ -49,6 +51,7 @@ function HeaderMobileContainer() {
       search={search}
       searchValue={searchValue}
       location={location}
+      add={add}
       onEvent={onEvent}
     />
   );

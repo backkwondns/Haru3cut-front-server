@@ -39,6 +39,7 @@ import { ReactComponent as AccountCircle24 } from './account_circle_24.svg';
 import { ReactComponent as Visibility24 } from './visibility_24.svg';
 import { ReactComponent as VisibilityOff24 } from './visibilityOff_24.svg';
 import { ReactComponent as Edit24 } from './edit_24.svg';
+import { ReactComponent as Add48 } from './add_48.svg';
 
 export {
   ArrowBack24,
@@ -82,4 +83,5 @@ export {
   VisibilityOff24,
   Edit24,
   Add24,
+  Add48,
 };

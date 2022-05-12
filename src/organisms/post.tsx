@@ -1,5 +1,5 @@
 import React from 'react';
-import { diaryInterface } from 'interfaces';
+import { organismsInterface } from 'interfaces';
 import styled from 'styled-components';
 import { Avatar } from 'organisms';
 import { Chip } from 'atoms';
@@ -68,7 +68,7 @@ const PostImage = styled.img`
   padding: 0px 10px 0px 10px;
 `;
 
-function Post(props: diaryInterface.postInterface) {
+function Post(props: organismsInterface.postInterface) {
   const { data, onEdit, onSave } = props;
   const { id, nickName, nickNameTag, avatar, tag, image, isSaved, privateDiary, createdAt } = data;
   return (

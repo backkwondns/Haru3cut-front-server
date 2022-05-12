@@ -49,6 +49,12 @@ const Label = styled.label`
   }}
 `;
 const ContentName = styled.span`
+  ${(props: atomsInterface.inputInterface) => {
+    const { color } = props;
+    return css`
+      color: ${color};
+    `;
+  }}
   position: absolute;
   bottom: 5px;
   left: 0;
@@ -121,7 +127,7 @@ function Input(props: atomsInterface.inputInterface): JSX.Element {
           />
           {noLabel ? null : (
             <Label className="full-width full-height" htmlFor={name} color={currentColor}>
-              <ContentName>{label}</ContentName>
+              <ContentName color={currentColor}>{label}</ContentName>
             </Label>
           )}
         </Form>

@@ -7,7 +7,7 @@ export interface navButtonInterface extends buttonInterface {
 
 export interface inputInterface {
   className?: string;
-  type?: 'text' | 'password';
+  type?: 'text' | 'password' | 'number';
   value?: string;
   width?: string;
   label?: string;
@@ -30,6 +30,7 @@ export interface buttonInterface {
   style?: CSSProperties;
   buttonType?: 'filled' | 'outlined' | 'none';
   color?: string;
+  disabled?: boolean;
   direction?: 'horizontal' | 'vertical';
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
