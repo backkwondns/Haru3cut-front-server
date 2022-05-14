@@ -8,7 +8,7 @@ import WriteDiary from './writeDiary';
 
 function UpdateDiaryContainer() {
   const rootStore = useContext(MobXProviderContext);
-  const updateTarget = useParams().postID;
+  const updateTarget = useParams().diaryID;
   const selectedImage = rootStore.diaryStore.getSelectedImage;
   const privateCheck = rootStore.diaryStore.getPrivateCheck;
   const tagList = rootStore.diaryStore.getTagList;
@@ -76,7 +76,7 @@ function UpdateDiaryContainer() {
     selectedTag.forEach((value: diaryInterface.Option) => sendTag.push(value.value));
 
     const formData = new FormData();
-    formData.append('postID', updateTarget!);
+    formData.append('diaryID', updateTarget!);
     formData.append('nickName', rootStore.accountStore.getNickName);
     formData.append('nickNameTag', rootStore.accountStore.getNickNameTag);
     if (selectedImage.imageFile.name) {
@@ -97,7 +97,7 @@ function UpdateDiaryContainer() {
 
   const onDelete = () => {
     const formData = {
-      postID: updateTarget,
+      diaryID: updateTarget,
       nickName: rootStore.accountStore.getNickName,
       nickNameTag: rootStore.accountStore.getNickNameTag,
     };

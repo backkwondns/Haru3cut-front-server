@@ -51,7 +51,7 @@ function Router() {
             }
           />
           <Route
-            path="writeDiary/:postID"
+            path="writeDiary/:diaryID"
             element={
               <React.Suspense fallback={<>...</>}>
                 <UpdateDiary />
