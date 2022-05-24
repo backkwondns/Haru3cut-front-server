@@ -12,6 +12,8 @@ export default class ThemeStore {
 
   search!: string;
 
+  add = false;
+
   sidebar = false;
 
   moreSetting = false;
@@ -57,6 +59,18 @@ export default class ThemeStore {
 
   toggleSidebar() {
     this.sidebar = !this.sidebar;
+  }
+
+  get getAdd() {
+    return this.add;
+  }
+
+  setAddFalse() {
+    this.add = false;
+  }
+
+  toggleAdd() {
+    this.add = !this.add;
   }
 
   get getMoreSetting() {

@@ -8,7 +8,7 @@ import WriteDiary from './writeDiary';
 
 function WriteDiaryContainer() {
   const rootStore = useContext(MobXProviderContext);
-  const updateTarget = useParams().postID;
+  const updateTarget = useParams().diaryID;
   const selectedImage = rootStore.diaryStore.getSelectedImage;
   const privateCheck = rootStore.diaryStore.getPrivateCheck;
   const tagList = rootStore.diaryStore.getTagList;

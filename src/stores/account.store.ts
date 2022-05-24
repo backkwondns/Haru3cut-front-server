@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { friendInterface } from 'interfaces';
 import RootStore from './root.store';
 
 export default class AccountStore {
@@ -12,9 +13,13 @@ export default class AccountStore {
 
   phoneNumber!: string;
 
-  friendList!: string[];
+  friendList!: friendInterface.friendInfoInterface[];
 
-  savedDiary!: string[];
+  friendRequestList!: friendInterface.friendInfoInterface[];
+
+  friendWaitList!: friendInterface.friendInfoInterface[];
+
+  friendBlackList!: friendInterface.friendInfoInterface[];
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
@@ -53,19 +58,35 @@ export default class AccountStore {
     this.phoneNumber = value;
   }
 
-  get getFriendList(): string[] {
+  get getFriendList(): friendInterface.friendInfoInterface[] {
     return this.friendList;
   }
 
-  setFriendList(value: string[]) {
+  setFriendList(value: friendInterface.friendInfoInterface[]) {
     this.friendList = value;
   }
 
-  get getSavedDiary(): string[] {
-    return this.savedDiary;
+  get getFriendRequestList(): friendInterface.friendInfoInterface[] {
+    return this.friendRequestList;
   }
 
-  setSavedDiary(value: string[]) {
-    this.savedDiary = value;
+  setFriendRequestList(value: friendInterface.friendInfoInterface[]) {
+    this.friendRequestList = value;
+  }
+
+  get getFriendWaitList(): friendInterface.friendInfoInterface[] {
+    return this.friendWaitList;
+  }
+
+  setFriendWaitList(value: friendInterface.friendInfoInterface[]) {
+    this.friendWaitList = value;
+  }
+
+  get getFriendBlackList(): friendInterface.friendInfoInterface[] {
+    return this.friendBlackList;
+  }
+
+  setFriendBlackList(value: friendInterface.friendInfoInterface[]) {
+    this.friendBlackList = value;
   }
 }

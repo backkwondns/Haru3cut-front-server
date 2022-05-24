@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface sidebarDesktopInterface {
   nickName: string;
-  nickNameTag: string;
+  nickNameTag: number;
   avatar: string;
   searchValue: string;
   sidebar: boolean;
@@ -20,11 +20,12 @@ export interface sidebarDesktopInterface {
 
 export interface headerMobileInterface {
   nickName: string;
-  nickNameTag: string;
+  nickNameTag: number;
   avatar: string;
   searchValue: string;
   search: boolean;
   location: string;
+  add: boolean;
   onEvent: {
     onClickSearch: () => void;
     onClickMore: (event: React.MouseEvent<HTMLButtonElement>) => void;

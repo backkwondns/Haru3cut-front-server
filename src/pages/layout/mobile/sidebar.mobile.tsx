@@ -105,6 +105,7 @@ function SidebarMobile(props: layoutInterface.sidebarMobileInterface) {
           />
           <SidebarItem
             text="친구설정"
+            target="friendSetting"
             icon={<ManageAccounts24 fill="white" className="sidebar-item-icon" />}
             mobile
             nested

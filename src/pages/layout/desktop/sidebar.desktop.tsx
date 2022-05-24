@@ -215,6 +215,7 @@ function SidebarDesktop(props: layoutInterface.sidebarDesktopInterface) {
             <SidebarItem text="일반설정" icon={<AccountCircle24 fill="white" className="sidebar-item-icon" />} nested />
             <SidebarItem
               text="친구설정"
+              target="friendSetting"
               icon={<ManageAccounts24 fill="white" className="sidebar-item-icon" />}
               nested
             />

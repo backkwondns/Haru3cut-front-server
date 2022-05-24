@@ -39,7 +39,9 @@ function LoginContainer() {
       rootStore.accountStore.setEmail(result.result.email);
       rootStore.accountStore.setPhoneNumber(result.result.phoneNumber);
       rootStore.accountStore.setFriendList(result.result.friendList);
-      rootStore.accountStore.setSavedDiary(result.result.savedDiary);
+      rootStore.accountStore.setFriendRequestList(result.result.friendRequestList);
+      rootStore.accountStore.setFriendWaitList(result.result.friendWaitList);
+      rootStore.accountStore.setFriendBlackList(result.result.friendBlackList);
       rootStore.themeStore.setLanguage(result.result.setting.language);
       rootStore.themeStore.setMode(result.result.setting.mode);
       rootStore.themeStore.setAvatar(result.result.setting.avatar);

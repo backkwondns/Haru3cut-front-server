@@ -1,20 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { MobXProviderContext, observer } from 'mobx-react';
-import { fetchFunction } from 'libs';
-import { diaryInterface, friendInterface } from 'interfaces';
+import { friendInterface } from 'interfaces/index';
 import { toast } from 'react-toastify';
-import { Button, NonDiary } from 'atoms';
-import Friend from './friend';
+import { Button } from 'atoms/index';
+import { fetchFunction } from '../../libs';
+import FriendSetting from './friendSetting';
+import { axiosPost } from '../../libs/fetchFunction';
 
-function FriendContainer() {
+function FriendSettingContainer() {
   const rootStore = useContext(MobXProviderContext);
   const { width } = rootStore.themeStore.getWindowSize;
   const nickName = rootStore.accountStore.getNickName;
   const nickNameTag = rootStore.accountStore.getNickNameTag;
   const add = rootStore.themeStore.getAdd;
-  const [statusMessage, setStatusMessage] = useState<string>();
 
-  const [friendDiary, setFriendDiary] = useState<diaryInterface.diary[]>([]);
   const [friendSearch, setFriendSearch] = useState<friendInterface.friendInfoInterface>({
     friendName: '',
     friendNameTag: 0,
@@ -28,22 +27,23 @@ function FriendContainer() {
     trigger: false,
   });
 
+  const [friendList, setFriendList] = useState<friendInterface.friendInfoInterface[]>([]);
+  const [friendWaitList, setFriendWaitList] = useState<friendInterface.friendInfoInterface[]>([]);
+  const [friendRequestList, setFriendRequestList] = useState<friendInterface.friendInfoInterface[]>([]);
+  const [friendBlackList, setFriendBlackList] = useState<friendInterface.friendInfoInterface[]>([]);
+
   useEffect(() => {
     rootStore.themeStore.setAddFalse();
     const sendForm = {
       nickName,
       nickNameTag,
-      friendList: rootStore.accountStore.getFriendList,
     };
-    fetchFunction.axiosPost<diaryInterface.diary[]>('diary/friendDiary', sendForm).then((value) => {
+    axiosPost<friendInterface.getFriendInterface>('account/getFriend', sendForm).then((value) => {
       if (value.status === 200) {
-        setFriendDiary(value.result);
-      } else if (value.status === 300) {
-        setStatusMessage('아직 등록된 친구가 없어요😢');
-      } else if (value.status === 404) {
-        setStatusMessage('볼 수 있는 일기가 없어요😢');
-      } else {
-        toast.error(value.message);
+        setFriendList(value.result.friendList);
+        setFriendWaitList(value.result.friendWaitList);
+        setFriendRequestList(value.result.friendRequestList);
+        setFriendBlackList(value.result.friendBlackList);
       }
     });
   }, []);
@@ -51,25 +51,6 @@ function FriendContainer() {
   const onChangeFriendSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.currentTarget;
     setFriendSearch({ ...friendSearch, [name]: value });
-  };
-
-  const onSave = (event: React.MouseEvent<SVGElement>) => {
-    const diaryID = event.currentTarget.id;
-    const sendForm = {
-      nickName,
-      nickNameTag,
-      diaryID,
-    };
-    fetchFunction.axiosPost<string>('diary/saveDiary', sendForm).then((value) => {
-      if (value.status === 200) {
-        setFriendDiary((prevState) =>
-          prevState.map((diary) => (diary.id === diaryID ? { ...diary, isSaved: !diary.isSaved } : diary)),
-        );
-        rootStore.diaryStore.toggleSavedFriendDiary(value.result);
-      } else {
-        toast.error(value.message);
-      }
-    });
   };
   const onClickAdd = () => {
     rootStore.themeStore.toggleAdd();
@@ -93,7 +74,6 @@ function FriendContainer() {
         }
       });
   };
-
   const onRequestFriend = () => {
     const sendForm = {
       nickName,
@@ -119,6 +99,17 @@ function FriendContainer() {
     }
   };
 
+  const onFriendClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const sendForm = {
+      nickName,
+      nickNameTag,
+      friendInfo: { friendName: event.currentTarget.name, friendNameTag: event.currentTarget.id },
+    };
+    if (event.currentTarget.id === 'reject') {
+      axiosPost('account/rejectFriend', sendForm);
+    }
+  };
+
   return (
     <div className="flex-column">
       {width > 620 ? (
@@ -126,23 +117,22 @@ function FriendContainer() {
           <Button onClick={onClickAdd}>친구 추가</Button>
         </div>
       ) : null}
-      {friendDiary.length ? (
-        <Friend
-          friendDiary={friendDiary}
-          add={add}
-          friendSearch={friendSearch}
-          searchedFriend={searchedFriend}
-          onSave={onSave}
-          onChangeFriendSearch={onChangeFriendSearch}
-          onSearchFriend={onSearchFriend}
-          onRequestFriend={onRequestFriend}
-          onPressKeyNameTag={onPressKeyNameTag}
-        />
-      ) : (
-        <NonDiary>{statusMessage}</NonDiary>
-      )}
+      <FriendSetting
+        friendList={friendList}
+        friendRequestList={friendRequestList}
+        friendWaitList={friendWaitList}
+        friendBlackList={friendBlackList}
+        add={add}
+        friendSearch={friendSearch}
+        searchedFriend={searchedFriend}
+        onSearchFriend={onSearchFriend}
+        onRequestFriend={onRequestFriend}
+        onChangeFriendSearch={onChangeFriendSearch}
+        onPressKeyNameTag={onPressKeyNameTag}
+        onFriendClick={onFriendClick}
+      />
     </div>
   );
 }
 
-export default observer(FriendContainer);
+export default observer(FriendSettingContainer);

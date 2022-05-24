@@ -1,4 +1,4 @@
-interface validateInputInterface {
+interface validateRegisterInputInterface {
   nickName: string;
   email: string;
   passWord: string;
@@ -6,8 +6,8 @@ interface validateInputInterface {
   phoneNumber: string;
 }
 
-export const validateInput = (inputForm: validateInputInterface) => {
-  const returnForm: validateInputInterface = {
+export const validateRegisterInput = (inputForm: validateRegisterInputInterface) => {
+  const returnForm: validateRegisterInputInterface = {
     nickName: '',
     email: '',
     passWord: '',

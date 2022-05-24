@@ -10,7 +10,7 @@ function SaveContainer() {
   const rootStore = useContext(MobXProviderContext);
   const nickName = rootStore.accountStore.getNickName;
   const nickNameTag = rootStore.accountStore.getNickNameTag;
-  const saveDiary = rootStore.diaryStore.getSaveDiary;
+  const [saveDiary, setSaveDiary] = useState<diaryInterface.diary[]>([]);
   const [statusMessage, setStatusMessage] = useState<string>();
 
   useEffect(() => {
@@ -20,24 +20,25 @@ function SaveContainer() {
     };
     fetchFunction.axiosPost<diaryInterface.diary[]>('diary/savedDiary', sendForm).then((value) => {
       if (value.status === 200) {
-        rootStore.diaryStore.setSaveDiary(value.result);
+        setSaveDiary(() => [...value.result]);
       } else if (value.status === 404) {
         setStatusMessage('볼 수 있는 일기가 없어요😢');
       } else {
         toast.error(value.message);
       }
     });
-  }, []);
+  }, [saveDiary.length]);
 
   const onSave = (event: React.MouseEvent<SVGElement>) => {
+    const diaryID = event.currentTarget.id;
     const sendForm = {
       nickName,
       nickNameTag,
-      diaryID: event.currentTarget.id,
+      diaryID,
     };
     fetchFunction.axiosPost<string>('diary/saveDiary', sendForm).then((value) => {
       if (value.status === 200) {
-        rootStore.diaryStore.toggleSavedDiary(value.result);
+        setSaveDiary((prevState) => prevState.filter((value: diaryInterface.diary) => value.id !== diaryID));
       } else {
         toast.error(value.message);
       }
