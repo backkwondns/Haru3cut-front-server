@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { fetchFunction } from 'libs';
 import { MobXProviderContext, observer } from 'mobx-react';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import Diary from './diary';
 function DiaryContainer() {
   const rootStore = useContext(MobXProviderContext);
   const navigator = useNavigate();
-  const diary = rootStore.diaryStore.getDiary;
+  const [diary, setDiary] = useState<diaryInterface.diary[]>([]);
 
   useEffect(() => {
     const sendForm = {
@@ -19,7 +19,7 @@ function DiaryContainer() {
     };
     fetchFunction.axiosPost<diaryInterface.diary[]>('diary/getMyDiary', sendForm).then((value) => {
       if (value.status === 200) {
-        rootStore.diaryStore.setDiary(value.result);
+        setDiary(value.result);
       } else if (value.status === 500) {
         toast.error(value.message);
       }

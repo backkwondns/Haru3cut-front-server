@@ -13,12 +13,6 @@ export default class DiaryStore {
 
   selectedTag: diaryInterface.Option[] = [];
 
-  diary: diaryInterface.diary[] = [];
-
-  friendDiary: diaryInterface.diary[] = [];
-
-  saveDiary: diaryInterface.diary[] = [];
-
   constructor(rootStore: RootStore) {
     makeAutoObservable(this);
     this.rootStore = rootStore;
@@ -58,41 +52,5 @@ export default class DiaryStore {
 
   setSelectedTag(selectedTag: diaryInterface.Option[]) {
     this.selectedTag = selectedTag;
-  }
-
-  get getDiary() {
-    return this.diary;
-  }
-
-  setDiary(diary: diaryInterface.diary[]) {
-    this.diary = diary;
-  }
-
-  get getFriendDiary() {
-    return this.friendDiary;
-  }
-
-  setFriendDiary(friendDiary: diaryInterface.diary[]) {
-    this.friendDiary = friendDiary;
-  }
-
-  toggleSavedFriendDiary(diaryID: string) {
-    const targetDiary = this.friendDiary.findIndex((value: diaryInterface.diary) => value.id === diaryID);
-    this.friendDiary[targetDiary] = {
-      ...this.friendDiary[targetDiary],
-      isSaved: !this.friendDiary[targetDiary].isSaved,
-    };
-  }
-
-  get getSaveDiary() {
-    return this.saveDiary;
-  }
-
-  setSaveDiary(savedDiary: diaryInterface.diary[]) {
-    this.saveDiary = savedDiary;
-  }
-
-  toggleSavedDiary(diaryID: string) {
-    this.saveDiary = this.saveDiary.filter((value: diaryInterface.diary) => value.id !== diaryID);
   }
 }

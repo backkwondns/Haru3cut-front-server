@@ -1,4 +1,16 @@
-import { Diary, Friend, Party, Register, Login, Layout, WriteDiary, Save, Setting, UpdateDiary } from 'pages';
+import {
+  Diary,
+  Friend,
+  Party,
+  Register,
+  Login,
+  Layout,
+  WriteDiary,
+  Save,
+  Setting,
+  FriendSetting,
+  UpdateDiary,
+} from 'pages';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -71,6 +83,14 @@ function Router() {
             element={
               <React.Suspense fallback={<>...</>}>
                 <Setting />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path="friendSetting"
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <FriendSetting />
               </React.Suspense>
             }
           />

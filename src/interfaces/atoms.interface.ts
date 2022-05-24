@@ -8,7 +8,7 @@ export interface navButtonInterface extends buttonInterface {
 export interface inputInterface {
   className?: string;
   type?: 'text' | 'password' | 'number';
-  value?: string;
+  value?: string | number;
   width?: string;
   label?: string;
   name?: string;

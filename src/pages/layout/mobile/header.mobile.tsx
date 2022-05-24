@@ -61,7 +61,10 @@ function HeaderMobile(props: layoutInterface.headerMobileInterface) {
       <ContainerHeader className="flex">
         <UserInfoArea nickName={nickName} nickNameTag={nickNameTag} avatar={avatar} />
         <div className="rightArea flex">
-          {location === '/friend' || location === '/party' ? (
+          {location === '/friend' ||
+          location === '/party' ||
+          location === '/friendSetting' ||
+          location === 'partySetting' ? (
             <AddIcon open={add} icon={<Add24 />} onClick={onClickAdd} />
           ) : null}
           <IconButton icon={<Search24 />} onClick={onClickSearch} />

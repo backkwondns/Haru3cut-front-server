@@ -1,3 +1,5 @@
+import { friendInterface } from 'interfaces';
+
 export type booleanType = boolean;
 export type widthType = string;
 export type heightType = string;
@@ -12,8 +14,11 @@ export type loginResponse = {
     mode: 'dark' | 'light' | 'system';
     avatar: string;
   };
-  friendList: string[];
-  savedDiary: string[];
+  friendList: friendInterface.friendInfoInterface[];
+  friendRequestList: friendInterface.friendInfoInterface[];
+  friendWaitList: friendInterface.friendInfoInterface[];
+  friendBlackList: friendInterface.friendInfoInterface[];
+  partyList: string[];
 };
 
 export interface axiosResponseInterface<responseType> {
